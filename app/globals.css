@@ -3,16 +3,26 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --foreground-rgb: 255, 255, 255; /* dark-mode fonts */
+  --background-start-rgb: 33, 33, 38; /* dark-mode back */
+  --background-end-rgb: 33, 33, 38; /* dark-mode back */
+  --primary-rgb: 217, 48, 79; /* dark-mode primary */
+  --menu-color-rgb: 43, 44, 49; /* dark-mode menu-color */
+  --profile-color-rgb: 43, 44, 49; /* dark-mode profile-color */
+  --menu-color-hover-rgb: 78, 78, 105; /* dark-mode menu-color-hover */
+  --hover-color-rgb: 158, 0, 42; /* dark-mode hover-color */
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --foreground-rgb: 26, 26, 26; /* light-mode fonts */
+    --background-start-rgb: 191, 191, 191; /* light-mode back */
+    --background-end-rgb: 255, 255, 255; /* default to white for light mode end background */
+    --primary-rgb: 255, 107, 128; /* light-mode primary */
+    --menu-color-rgb: 151, 151, 151; /* light-mode menu-color */
+    --profile-color-rgb: 216, 208, 208; /* light-mode profile-color */
+    --menu-color-hover-rgb: 207, 207, 207; /* light-mode menu-color-hover */
+    --hover-color-rgb: 255, 0, 63; /* light-mode hover-color */
   }
 }
 
@@ -29,5 +39,41 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .bg-primary {
+    background-color: rgb(var(--primary-rgb));
+  }
+
+  .bg-menu {
+    background-color: rgb(var(--menu-color-rgb));
+  }
+
+  .bg-profile {
+    background-color: rgb(var(--profile-color-rgb));
+  }
+
+  .hover-bg-menu {
+    &:hover {
+      background-color: rgb(var(--menu-color-hover-rgb));
+    }
+  }
+
+  .hover-bg-hover {
+    &:hover {
+      background-color: rgb(var(--hover-color-rgb));
+    }
+  }
+
+  .text-fonts {
+    color: rgb(var(--foreground-rgb));
+  }
+
+  .rounded-lg {
+    border-radius: 0.5rem;
+  }
+
+  .rounded-full {
+    border-radius: 9999px;
   }
 }
