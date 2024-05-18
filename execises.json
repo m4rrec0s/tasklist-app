@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Agachamento",
+        "description": "O agachamento é um exercício que trabalha os músculos das pernas e glúteos. É realizado flexionando os joelhos e quadris, mantendo a coluna ereta.",
+        "image": "caminho/para/imagem-agachamento.jpg",
+        "tags": ["pernas", "glúteos"]
+    },
+    {
+        "name": "Flexão de braço",
+        "description": "A flexão de braço é um exercício que trabalha os músculos do peito, ombros e tríceps. É realizado apoiando as mãos no chão e estendendo os braços.",
+        "image": "caminho/para/imagem-flexao-braco.jpg",
+        "tags": ["peito", "ombros", "tríceps"]
+    },
+    {
+        "name": "Prancha",
+        "description": "A prancha é um exercício que fortalece os músculos do core, incluindo o abdômen, lombar e glúteos. É realizado apoiando os antebraços e os pés no chão, mantendo o corpo reto.",
+        "image": "caminho/para/imagem-prancha.jpg",
+        "tags": ["abdômen", "lombar", "glúteos"]
+    }
+]
