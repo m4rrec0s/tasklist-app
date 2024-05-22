@@ -13,20 +13,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Exercise {
-  id          String   @id @default(uuid())
-  name        String
-  description String
-  sets        Int
-  reps        Int
-  weight      Int @default(0)
-  createdAt   DateTime @default(now())
-  category    Category[]
+model Category {
+  id        Int        @id @default(autoincrement())
+  name      String
+  exercises Exercise[]
 }
 
-model Category {
-  id          String    @id @default(uuid())
+model Exercise {
+  id          Int      @id @default(autoincrement())
   name        String
-  exercises   Exercise[]
-  createdAt   DateTime  @default(now())
+  description String
+  image       String
+  duration    Int
+  rest        Int
+  categoryId  Int
+  sets        Int
+  reps        Int
+  category    Category @relation(fields: [categoryId], references: [id])
 }

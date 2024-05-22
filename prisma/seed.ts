@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
 
@@ -44,7 +44,7 @@ async function main() {
     {
       name: "Abdominal Biscicleta",
       description: description,
-      image: "hhttps://utfs.io/f/3fcdb820-c459-41b9-98d6-b7239d8e5878-ajzbk0.jpg",
+      image: "https://utfs.io/f/3fcdb820-c459-41b9-98d6-b7239d8e5878-ajzbk0.jpg",
       duration: 60,
       rest: 30,
       categoryId: categoryMap["abdomen"],
@@ -104,7 +104,7 @@ async function main() {
     {
       name: "Ponte com Elevação de Perna",
       description: description,
-      image: "hhttps://utfs.io/f/97bdecd4-e834-44bd-bde4-88092843baf7-3z98as.jpg",
+      image: "https://utfs.io/f/97bdecd4-e834-44bd-bde4-88092843baf7-3z98as.jpg",
       duration: 60,
       rest: 30,
       categoryId: categoryMap["glute"],
