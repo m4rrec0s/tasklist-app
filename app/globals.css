@@ -76,4 +76,8 @@ body {
   .rounded-full {
     border-radius: 9999px;
   }
+
+  .text-muret-forground {
+    color: rgb(var(--foreground-rgb));
+  }
 }
