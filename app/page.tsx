@@ -4,24 +4,10 @@ const prisma = new PrismaClient();
 import Banner from "./_components/banner";
 import ExerciseList from "./_components/exercise-list";
 import Header from "./_components/header";
-
-type Exercise = {
-  id: number;
-  name: string;
-  description: string;
-  image: string;
-  duration: number;
-  rest: number;
-  categoryId: number;
-  sets: number;
-  reps: number;
-  category: {
-    name: string;
-  };
-};
+import Link from "next/link";
 
 export default async function Home() {
-  const exercises: Exercise[] = await prisma.exercise.findMany({
+  const exercises = await prisma.exercise.findMany({
     take: 10,
     include: {
       category: {
@@ -42,7 +28,10 @@ export default async function Home() {
         <Banner />
       </div>
 
-      <h2 className="mt-6 px-2 font-semibold text-lg">Exercícios Recentes</h2>
+      <div className="mt-6 px-2 flex justify-between items-center">
+        <h2 className="font-semibold text-lg">Exercícios Recentes</h2>
+        <Link href="/" className="text-gray-400 text-sm">Ver Todos</Link>
+      </div>
 
       <div className="mt-6 px-2">
         <ExerciseList exercises={exercises} />

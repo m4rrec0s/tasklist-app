@@ -16,19 +16,11 @@ interface Exercise {
   };
 }
 
-interface ExerciseListProps {
-  exercises: Prisma.ExerciseGetPayload<{
-    include: {
-      category: {
-        select: {
-          name: true;
-        };
-      };
-    };
-  }>;
-}
+type ExerciseListProps = {
+  exercises: Exercise[];
+};
 
-const ExerciseList = ({exercises}: ExerciseListProps) => {
+const ExerciseList: React.FC<ExerciseListProps> = ({ exercises }) => {
   return (
     <div className="flex items-center gap-3 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
       {Array.isArray(exercises) && exercises.map((exercise: Exercise) => (
