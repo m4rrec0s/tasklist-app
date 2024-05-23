@@ -29,8 +29,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "./ui/dialog";
+import { Separator } from "./ui/separator";
 
 const Header = () => {
+  const imgUser = "/user.jpeg";
   return (
     <div>
       <Image
@@ -64,28 +66,28 @@ const Header = () => {
                 <Home size={20} />
                 <span className="text-sm">Início</span>
               </Link>
-
+              <Separator className="bg-gray-400" />
               <Link href={"/"} className="flex items-center gap-2">
                 <PanelsTopBottomIcon size={20} />
                 <span className="text-sm">Exercícios</span>
               </Link>
-
+              <Separator className="bg-gray-400" />
               <Link href={"/"} className="flex items-center gap-2">
                 <BarChartBigIcon size={20} />
                 <span className="text-sm">Gráficos</span>
               </Link>
-
+              <Separator className="bg-gray-400" />
               <Link href={"/"} className="flex items-center gap-2">
                 <MessageCircleIcon size={20} />
                 <span className="text-sm">Mensagens</span>
               </Link>
-
+              <Separator className="bg-gray-400 " />
               <Link href={"/"} className="flex items-center gap-2">
                 <Calendar size={20} />
                 <span className="text-sm">Calendário</span>
               </Link>
             </div>
-
+            
             <div className="flex items-center justify-around">
               <Link
                 href={"https://github.com/m4rrec0s/tasklist-app"}
@@ -112,7 +114,7 @@ const Header = () => {
           <DialogTrigger>
             <Button className="rounded-full w-14 h-14 bg-profile hover:bg-primary">
               <Avatar className="w-14 h-14">
-                <AvatarImage src="/user.jpeg" />
+                <AvatarImage src={imgUser} />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
             </Button>
@@ -124,7 +126,7 @@ const Header = () => {
             <div className="flex mt-5 justify-between items-center">
               <div className="flex items-center gap-3">
                 <Image
-                  src={"/user.jpeg"}
+                  src={imgUser}
                   alt="profile"
                   width={70}
                   height={70}
@@ -137,7 +139,7 @@ const Header = () => {
                   </span>
                 </div>
               </div>
-              <Button size="icon" className="rounded-lg">
+              <Button size="icon" className="rounded-lg hover:bg-menu-hover">
                 <LogOutIcon />
               </Button>
             </div>

@@ -53,17 +53,13 @@ body {
     background-color: rgb(var(--profile-color-rgb));
   }
 
-  .hover-bg-menu {
-    &:hover {
+  .bg-menu-hover {
       background-color: rgb(var(--menu-color-hover-rgb));
     }
-  }
 
-  .hover-bg-hover {
-    &:hover {
+  .bg-hover {
       background-color: rgb(var(--hover-color-rgb));
     }
-  }
 
   .text-fonts {
     color: rgb(var(--foreground-rgb));
