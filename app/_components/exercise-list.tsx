@@ -1,4 +1,3 @@
-import { Prisma } from "@prisma/client";
 import ExerciseItem from "./exercise-item";
 
 interface Exercise {

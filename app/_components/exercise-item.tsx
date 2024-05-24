@@ -16,7 +16,7 @@ interface ExerciseItemProps {
 
 const ExerciseItem = ({ exercise }: ExerciseItemProps) => {
   return (
-    <Link className={"w-[150px] min-w-[150px]"} href={`/`}>
+    <Link className={"w-[150px] min-w-[150px]"} href={`/exercises/${exercise.id}`}>
       <div className="w-full space-y-2">
         <div className="relative aspect-square w-full">
           <Image
