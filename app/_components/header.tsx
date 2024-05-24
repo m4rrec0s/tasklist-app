@@ -67,7 +67,7 @@ const Header = () => {
                 <span className="text-sm">Início</span>
               </Link>
               <Separator className="bg-gray-400" />
-              <Link href={"/"} className="flex items-center gap-2">
+              <Link href={"/pages/all-exercises"} className="flex items-center gap-2">
                 <PanelsTopBottomIcon size={20} />
                 <span className="text-sm">Exercícios</span>
               </Link>

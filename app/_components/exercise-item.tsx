@@ -1,6 +1,7 @@
 import { Exercise, Prisma } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
+import { cn } from "../_lib/utils";
 
 interface ExerciseItemProps {
   exercise: Prisma.ExerciseGetPayload<{
@@ -12,11 +13,12 @@ interface ExerciseItemProps {
       };
     };
   }>;
+  className?: string;
 }
 
-const ExerciseItem = ({ exercise }: ExerciseItemProps) => {
+const ExerciseItem = ({ exercise, className }: ExerciseItemProps) => {
   return (
-    <Link className={"w-[150px] min-w-[150px]"} href={`/exercises/${exercise.id}`}>
+    <Link className={cn("w-[150px] min-w-[150px]", className)} href={`/exercises/${exercise.id}`}>
       <div className="w-full space-y-2">
         <div className="relative aspect-square w-full">
           <Image
