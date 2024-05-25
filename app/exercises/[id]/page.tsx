@@ -1,6 +1,7 @@
 import { db } from "@/app/_lib/prisma";
 import { notFound } from "next/navigation";
 import ExerciseImage from "./_components/exercise-image";
+import ExerciseDetails from "./_components/exercise-details";
 
 interface ExercisePageProps {
     params: {
@@ -29,6 +30,8 @@ const ExercisePage = async ({ params: { id } }: ExercisePageProps) => {
     return (
         <div>
             <ExerciseImage exercise={exercise} />
+
+            <ExerciseDetails exercise={exercise} />
         </div>
     );
 }
