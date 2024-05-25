@@ -4,6 +4,7 @@
 
 :root {
   --foreground-rgb: 255, 255, 255; /* dark-mode fonts */
+  --text-muted-foreground-rgb: 107, 114, 128; /* dark-mode fonts */
   --background-start-rgb: 33, 33, 38; /* dark-mode back */
   --background-end-rgb: 33, 33, 38; /* dark-mode back */
   --primary-rgb: 217, 48, 79; /* dark-mode primary */
@@ -16,6 +17,7 @@
 @media (prefers-color-scheme: light) {
   :root {
     --foreground-rgb: 26, 26, 26; /* light-mode fonts */
+    --text-muted-foreground-rgb: 107, 114, 128; /* dark-mode fonts */
     --background-start-rgb: 191, 191, 191; /* light-mode back */
     --background-end-rgb: 255, 255, 255; /* default to white for light mode end background */
     --primary-rgb: 255, 107, 128; /* light-mode primary */
@@ -63,6 +65,10 @@ body {
 
   .text-fonts {
     color: rgb(var(--foreground-rgb));
+  }
+
+  .text-muted-foreground {
+    color: rgb(var(--text-muted-foreground-rgb));
   }
 
   .rounded-lg {
