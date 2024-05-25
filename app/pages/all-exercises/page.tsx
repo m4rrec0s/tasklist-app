@@ -1,5 +1,4 @@
 import ExerciseItem from "@/app/_components/exercise-item";
-import ExerciseList from "@/app/_components/exercise-list";
 import Header from "@/app/_components/header";
 import { db } from "@/app/_lib/prisma";
 
@@ -13,10 +12,11 @@ const AllExercises = async () => {
       },
     },
   });
-  return <div className="px-2 py-6">
-    <Header />
+  return (
+    <div className="px-2 pt-2">
+      <Header />
       <div>
-        <h2 className="mb-5 text-lg font-semibold">Exercícios</h2>
+        <h2 className="mb-5 text-lg font-semibold">Treinos</h2>
         <div className="grid grid-cols-2 gap-6">
           {exercises.map((exercises) => (
             <ExerciseItem
@@ -27,7 +27,8 @@ const AllExercises = async () => {
           ))}
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
 
 export default AllExercises;

@@ -71,6 +71,13 @@ export default async function Home() {
       </div>
 
       <div className="mt-6 px-2 flex justify-between items-center">
+        <h2 className="font-semibold text-lg">Seus treinos</h2>
+        <Link href="/" className="text-gray-400 text-sm">
+          Ver mais
+        </Link>
+      </div>
+
+      <div className="mt-6 px-2 flex justify-between items-center">
         <h2 className="font-semibold text-lg">Rendimento</h2>
         <Link href="/" className="text-gray-400 text-sm">
           Ver mais

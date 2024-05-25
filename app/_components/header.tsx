@@ -5,13 +5,13 @@ import { Button } from "./ui/button";
 import {
   BarChartBigIcon,
   Calendar,
+  Dumbbell,
   GithubIcon,
   Home,
   Instagram,
   LogOutIcon,
   MenuIcon,
   MessageCircleIcon,
-  PanelsTopBottomIcon,
 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import {
@@ -30,9 +30,14 @@ import {
   DialogTrigger,
 } from "./ui/dialog";
 import { Separator } from "./ui/separator";
+import { useEffect, useState } from "react";
 
 const Header = () => {
-  const imgUser = "/user.jpeg";
+  const [imgUser, setImgUser] = useState("/user.jpeg");
+
+  useEffect(() => {
+    setImgUser("/user.jpeg");
+  }, []);
   return (
     <div>
       <Image
@@ -68,21 +73,21 @@ const Header = () => {
               </Link>
               <Separator className="bg-gray-400" />
               <Link href={"/pages/all-exercises"} className="flex items-center gap-2">
-                <PanelsTopBottomIcon size={20} />
-                <span className="text-sm">Exercícios</span>
+                <Dumbbell size={20} />
+                <span className="text-sm">Treinos</span>
               </Link>
               <Separator className="bg-gray-400" />
-              <Link href={"/"} className="flex items-center gap-2">
+              <Link href={"/pages/graphics"} className="flex items-center gap-2">
                 <BarChartBigIcon size={20} />
                 <span className="text-sm">Gráficos</span>
               </Link>
               <Separator className="bg-gray-400" />
-              <Link href={"/"} className="flex items-center gap-2">
+              <Link href={"/pages/mensages"} className="flex items-center gap-2">
                 <MessageCircleIcon size={20} />
                 <span className="text-sm">Mensagens</span>
               </Link>
               <Separator className="bg-gray-400 " />
-              <Link href={"/"} className="flex items-center gap-2">
+              <Link href={"/pages/calendar"} className="flex items-center gap-2">
                 <Calendar size={20} />
                 <span className="text-sm">Calendário</span>
               </Link>
