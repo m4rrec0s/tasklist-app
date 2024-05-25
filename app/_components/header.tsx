@@ -7,11 +7,14 @@ import {
   Calendar,
   Dumbbell,
   GithubIcon,
+  HeartIcon,
   Home,
   Instagram,
   LogOutIcon,
   MenuIcon,
   MessageCircleIcon,
+  SettingsIcon,
+  Stethoscope,
 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import {
@@ -31,6 +34,14 @@ import {
 } from "./ui/dialog";
 import { Separator } from "./ui/separator";
 import { useEffect, useState } from "react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
 
 const Header = () => {
   const [imgUser, setImgUser] = useState("/user.jpeg");
@@ -72,27 +83,39 @@ const Header = () => {
                 <span className="text-sm">Início</span>
               </Link>
               <Separator className="bg-gray-400" />
-              <Link href={"/pages/all-exercises"} className="flex items-center gap-2">
+              <Link
+                href={"/pages/all-exercises"}
+                className="flex items-center gap-2"
+              >
                 <Dumbbell size={20} />
                 <span className="text-sm">Treinos</span>
               </Link>
               <Separator className="bg-gray-400" />
-              <Link href={"/pages/graphics"} className="flex items-center gap-2">
+              <Link
+                href={"/pages/graphics"}
+                className="flex items-center gap-2"
+              >
                 <BarChartBigIcon size={20} />
                 <span className="text-sm">Gráficos</span>
               </Link>
               <Separator className="bg-gray-400" />
-              <Link href={"/pages/mensages"} className="flex items-center gap-2">
+              <Link
+                href={"/pages/mensages"}
+                className="flex items-center gap-2"
+              >
                 <MessageCircleIcon size={20} />
                 <span className="text-sm">Mensagens</span>
               </Link>
               <Separator className="bg-gray-400 " />
-              <Link href={"/pages/calendar"} className="flex items-center gap-2">
+              <Link
+                href={"/pages/calendar"}
+                className="flex items-center gap-2"
+              >
                 <Calendar size={20} />
                 <span className="text-sm">Calendário</span>
               </Link>
             </div>
-            
+
             <div className="flex items-center justify-around">
               <Link
                 href={"https://github.com/m4rrec0s/tasklist-app"}
@@ -115,41 +138,65 @@ const Header = () => {
           </SheetContent>
         </Sheet>
 
-        <Dialog>
-          <DialogTrigger>
+        <DropdownMenu>
+          <DropdownMenuTrigger>
             <Button className="rounded-full w-14 h-14 bg-profile hover:bg-primary">
               <Avatar className="w-14 h-14">
                 <AvatarImage src={imgUser} />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
             </Button>
-          </DialogTrigger>
-          <DialogContent className="bg-menu rounded-lg">
-            <DialogHeader>
-              <DialogTitle>Perfil</DialogTitle>
-            </DialogHeader>
-            <div className="flex mt-5 justify-between items-center">
-              <div className="flex items-center gap-3">
-                <Image
-                  src={imgUser}
-                  alt="profile"
-                  width={70}
-                  height={70}
-                  className="rounded-full"
-                />
-                <div className="flex flex-col gap-1">
-                  <h2 className="font-semibold text-xl">Hanna Martinez</h2>
-                  <span className="text-sm text-gray-400">
-                    exemplo@exemplo.com
-                  </span>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="bg-menu p-5">
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>
+              <div className="flex justify-between items-center w-[350px]">
+                <div className="flex items-center gap-2">
+                  <Image
+                    src={imgUser}
+                    alt="profile"
+                    width={50}
+                    height={50}
+                    className="rounded-full"
+                  />
+                  <div className="flex flex-col">
+                    <h2 className="font-semibold text-xl truncate">Hanna Martinez</h2>
+                    <span className="text-sm text-gray-400">
+                      exemplo@exemplo.com
+                    </span>
+                  </div>
                 </div>
+                <Button size="icon" className="rounded-lg hover:bg-menu-hover">
+                  <LogOutIcon />
+                </Button>
               </div>
-              <Button size="icon" className="rounded-lg hover:bg-menu-hover">
-                <LogOutIcon />
-              </Button>
-            </div>
-          </DialogContent>
-        </Dialog>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <Separator className="bg-gray-400" />
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>
+              <Link href={"/"} className="flex gap-2">
+                <HeartIcon size={20} />
+                <span className="font-semibold">Treinos favoritos</span>
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>
+              <Link href={"/"} className="flex gap-2">
+                <Stethoscope size={20} />
+                <span className="font-semibold">Avaliação Física</span>
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>
+              <Link href={"/settings"} className="flex gap-2">
+                <SettingsIcon size={20} />
+                <span className="font-semibold">Configurações</span>
+              </Link>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </div>
   );
