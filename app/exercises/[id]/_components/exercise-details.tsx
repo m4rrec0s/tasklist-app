@@ -48,7 +48,7 @@ const ExerciseDetails = ({ exercise }: ExerciseDetailsProps) => {
               </div>
               <div className="flex flex-col gap-1 items-center">
                 <Clock size={24} color="#6B7280" />
-                <span className="font-normal text-xs">Tempo P/R.</span>
+                <span className="font-normal text-xs">Tempo P/S.</span>
                 <span>{convertDuration(exercise.duration)}</span>
               </div>
               {exercise.reps > 0 && (
