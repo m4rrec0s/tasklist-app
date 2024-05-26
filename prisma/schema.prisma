@@ -14,20 +14,26 @@ datasource db {
 }
 
 model Category {
-  id        Int        @id @default(autoincrement())
-  name      String
-  exercises Exercise[]
+  id            Int           @id @default(autoincrement())
+  name          String
+  subcategories Subcategory[]
+}
+
+model Subcategory {
+  id         Int        @id @default(autoincrement())
+  name       String
+  categoryId Int
+  category   Category  @relation(fields: [categoryId], references: [id])
+  exercises  Exercise[]
 }
 
 model Exercise {
-  id          Int      @id @default(autoincrement())
-  name        String
-  description String
-  image       String
-  duration    Int
-  rest        Int
-  categoryId  Int
-  sets        Int
-  reps        Int
-  category    Category @relation(fields: [categoryId], references: [id])
+  id             String       @id @default(uuid())
+  name           String
+  description    String
+  image          String
+  duration       Int
+  rest           Int
+  subcategoryId  Int
+  subcategory    Subcategory @relation(fields: [subcategoryId], references: [id])
 }
