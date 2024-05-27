@@ -5,20 +5,20 @@ import ExerciseDetails from "./_components/exercise-details";
 
 interface ExercisePageProps {
     params: {
-        id: number,
+        id: string,
     };
 }
 
 const ExercisePage = async ({ params: { id } }: ExercisePageProps) => {
     const exercise = await db.exercise.findUnique({
         where: {
-            id: Number(id),
+            id,
         },
         include: {
-            category: {
-                select: {
-                    name: true,
-                },
+            subcategory: {
+                include: {
+                    category: true,
+                }
             },
         },
     });

@@ -13,22 +13,26 @@ import { Clock, Dumbbell, Repeat } from "lucide-react";
 interface ExerciseDetailsProps {
   exercise: Prisma.ExerciseGetPayload<{
     include: {
-      category: {
-        select: {
-          name: true;
-        };
-      };
-    };
-  }>;
+      subcategory: {
+        include: {
+          category: true;
+
+                    }
+                  }
+                }
+              }>;
 }
 
 const ExerciseDetails = ({ exercise }: ExerciseDetailsProps) => {
   return (
     <div className="py-5 px-3">
       <h1 className="font-semibold text-xl">{exercise.name}</h1>
-      <div>
+      <div className="flex gap-2">
+        <p className="text-sm text-muted-foreground bg-slate-900 w-fit px-2 py-1 rounded-lg mt-2">
+          {exercise.subcategory.category.name}
+        </p>
         <p className="text-sm text-muted-foreground bg-gray-800 w-fit px-2 py-1 rounded-lg mt-2">
-          {exercise.category.name}
+          {exercise.subcategory.name}
         </p>
       </div>
       <div className="mt-6">

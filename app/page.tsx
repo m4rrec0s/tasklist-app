@@ -8,7 +8,7 @@ export default async function Home() {
   const exercises = await db.exercise.findMany({
     take: 10,
     include: {
-      category: {
+      subcategory: {
         select: {
           name: true,
         },
@@ -18,13 +18,15 @@ export default async function Home() {
 
   const legExercises = await db.exercise.findMany({
     where: {
-      category: {
-        name: "legs",
+      subcategory: {
+        category: {
+          name: "Inferiores",  
+        }
       },
     },
     take: 10,
     include: {
-      category: {
+      subcategory: {
         select: {
           name: true,
         },
@@ -32,22 +34,23 @@ export default async function Home() {
     },
   });
 
-  const gluteExercises = await db.exercise.findMany({
+  const topExercises = await db.exercise.findMany({
     where: {
-      category: {
-        name: "glute",
+      subcategory: {
+        category: {
+          name: "Superiores",  
+        }
       },
     },
     take: 10,
     include: {
-      category: {
+      subcategory: {
         select: {
           name: true,
         },
       },
     },
   });
-
   
   return (
     <>
@@ -96,14 +99,14 @@ export default async function Home() {
       </div>
 
       <div className="mt-6 px-2 flex justify-between items-center">
-        <h2 className="font-semibold text-lg">Exercícios para o Glúteo</h2>
+        <h2 className="font-semibold text-lg">Superiores</h2>
         <Link href="/" className="text-gray-400 text-sm">
           Ver mais
         </Link>
       </div>
 
       <div className="mt-6 px-2">
-        <ExerciseList exercises={gluteExercises} />
+        <ExerciseList exercises={topExercises} />
       </div>
     </>
   );

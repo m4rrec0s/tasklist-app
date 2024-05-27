@@ -1,19 +1,21 @@
 import ExerciseItem from "./exercise-item";
 
-interface Exercise {
-  id: number;
+type Exercise = {
+  id: string;
   name: string;
   description: string;
   image: string;
   duration: number;
   rest: number;
-  categoryId: number;
   sets: number;
   reps: number;
-  category: {
+  subcategoryId: number;
+  categoryId: number;
+  category: string;
+  subcategory: {
     name: string;
   };
-}
+};
 
 type ExerciseListProps = {
   exercises: Exercise[];

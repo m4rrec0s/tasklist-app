@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
 
@@ -553,18 +553,17 @@ const createSubCategories = async () => {
 
 const createExercises = async () => {
   for await (const { subCategory: subCategoryName, ...data } of exercises) {
-    const subCategpry = await prisma.subcategory.findFirst({
+    const subCategory = await prisma.subcategory.findFirst({
       where: { name: subCategoryName },
     });
 
-    if (!subCategpry) {
+    if (!subCategory) {
       console.warn(`Sub-categoria: ${subCategoryName} não foi encontrado!`);
       continue;
     }
 
     await prisma.exercise.create({
-      ...data,
-      subcategoryId: subCategpry.id,
+      data: { ...data, subcategoryId: subCategory.id },
     });
   }
 };
