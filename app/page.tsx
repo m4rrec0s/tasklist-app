@@ -53,7 +53,7 @@ export default async function Home() {
   });
   
   return (
-    <>
+    <div className="px-2 pb-3">
       <div className="pt-2 px-2">
         <Header />
       </div>
@@ -108,6 +108,6 @@ export default async function Home() {
       <div className="mt-6 px-2">
         <ExerciseList exercises={topExercises} />
       </div>
-    </>
+    </div>
   );
 }

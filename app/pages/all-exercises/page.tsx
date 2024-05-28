@@ -5,7 +5,7 @@ import { db } from "@/app/_lib/prisma";
 const AllExercises = async () => {
   const exercises = await db.exercise.findMany({
     include: {
-      category: {
+      subcategory: {
         select: {
           name: true,
         },

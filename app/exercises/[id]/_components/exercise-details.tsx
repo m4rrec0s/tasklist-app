@@ -16,11 +16,10 @@ interface ExerciseDetailsProps {
       subcategory: {
         include: {
           category: true;
-
-                    }
-                  }
-                }
-              }>;
+        };
+      };
+    };
+  }>;
 }
 
 const ExerciseDetails = ({ exercise }: ExerciseDetailsProps) => {
@@ -31,7 +30,7 @@ const ExerciseDetails = ({ exercise }: ExerciseDetailsProps) => {
         <p className="text-sm text-muted-foreground bg-slate-900 w-fit px-2 py-1 rounded-lg mt-2">
           {exercise.subcategory.category.name}
         </p>
-        <p className="text-sm text-muted-foreground bg-gray-800 w-fit px-2 py-1 rounded-lg mt-2">
+        <p className="text-sm text-muted-foreground bg-gray-800 w-fit px-2 py-1 rounded-lg mt-2 first-letter:uppercase">
           {exercise.subcategory.name}
         </p>
       </div>
