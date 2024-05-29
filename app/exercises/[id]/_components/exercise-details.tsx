@@ -1,14 +1,24 @@
 "use client";
 
+import { Button } from "@/app/_components/ui/button";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
 } from "@/app/_components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/app/_components/ui/dialog";
 import { convertDuration } from "@/app/_helpers/timer";
 import { Prisma } from "@prisma/client";
 import { Clock, Dumbbell, Repeat } from "lucide-react";
+import { useState } from "react";
 
 interface ExerciseDetailsProps {
   exercise: Prisma.ExerciseGetPayload<{
@@ -23,6 +33,11 @@ interface ExerciseDetailsProps {
 }
 
 const ExerciseDetails = ({ exercise }: ExerciseDetailsProps) => {
+  //constante que faz a contagem regressiva do tempo do exercício
+  const [time, setTime] = useState(exercise.duration);
+  const [isRunning, setIsRunning] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+
   return (
     <div className="py-5 px-3">
       <h1 className="font-semibold text-xl">{exercise.name}</h1>
@@ -64,6 +79,55 @@ const ExerciseDetails = ({ exercise }: ExerciseDetailsProps) => {
             </div>
           </CardContent>
         </Card>
+      </div>
+      <div className="fixed bottom-2 left-0 w-full flex justify-center mt-6 px-5">
+        <Dialog>
+          <DialogTrigger>
+            <Button className="w-full hover:bg-hover rounded-lg">
+              Iniciar exercício
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="bg-menu">
+            <DialogHeader>
+              <DialogTitle>{exercise.name}</DialogTitle>
+              <div>
+                <DialogDescription>
+                  {convertDuration(time)}
+                </DialogDescription>
+                <div className="flex justify-center gap-4 mt-6">
+                  <Button
+                    className="bg-red-500 hover:bg-red-600"
+                    onClick={() => {
+                      setTime(exercise.duration);
+                      setIsRunning(false);
+                      setIsPaused(false);
+                    }}
+                  >
+                    Reiniciar
+                  </Button>
+                  <Button
+                    className="bg-green-500 hover:bg-green-600"
+                    onClick={() => {
+                      setIsRunning(!isRunning);
+                      setIsPaused(false);
+                    }}
+                  >
+                    {isRunning ? "Pausar" : "Iniciar"}
+                  </Button>
+                  <Button
+                    className="bg-yellow-500 hover:bg-yellow-600"
+                    onClick={() => {
+                      setIsPaused(!isPaused);
+                      setIsRunning(false);
+                    }}
+                  >
+                    {isPaused ? "Continuar" : "Pausar"}
+                  </Button>
+                </div>
+              </div>
+            </DialogHeader>
+          </DialogContent>
+        </Dialog>
       </div>
     </div>
   );
