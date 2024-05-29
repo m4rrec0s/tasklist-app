@@ -19,6 +19,7 @@ import { convertDuration } from "@/app/_helpers/timer";
 import { Prisma } from "@prisma/client";
 import { Clock, Dumbbell, Repeat } from "lucide-react";
 import { useState } from "react";
+import Timer from "./timer";
 
 interface ExerciseDetailsProps {
   exercise: Prisma.ExerciseGetPayload<{
@@ -33,11 +34,7 @@ interface ExerciseDetailsProps {
 }
 
 const ExerciseDetails = ({ exercise }: ExerciseDetailsProps) => {
-  //constante que faz a contagem regressiva do tempo do exercício
-  const [time, setTime] = useState(exercise.duration);
-  const [isRunning, setIsRunning] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
-
+  
   return (
     <div className="py-5 px-3">
       <h1 className="font-semibold text-xl">{exercise.name}</h1>
@@ -91,38 +88,9 @@ const ExerciseDetails = ({ exercise }: ExerciseDetailsProps) => {
             <DialogHeader>
               <DialogTitle>{exercise.name}</DialogTitle>
               <div>
-                <DialogDescription>
-                  {convertDuration(time)}
-                </DialogDescription>
-                <div className="flex justify-center gap-4 mt-6">
-                  <Button
-                    className="bg-red-500 hover:bg-red-600"
-                    onClick={() => {
-                      setTime(exercise.duration);
-                      setIsRunning(false);
-                      setIsPaused(false);
-                    }}
-                  >
-                    Reiniciar
-                  </Button>
-                  <Button
-                    className="bg-green-500 hover:bg-green-600"
-                    onClick={() => {
-                      setIsRunning(!isRunning);
-                      setIsPaused(false);
-                    }}
-                  >
-                    {isRunning ? "Pausar" : "Iniciar"}
-                  </Button>
-                  <Button
-                    className="bg-yellow-500 hover:bg-yellow-600"
-                    onClick={() => {
-                      setIsPaused(!isPaused);
-                      setIsRunning(false);
-                    }}
-                  >
-                    {isPaused ? "Continuar" : "Pausar"}
-                  </Button>
+                {/* mostrar cronômetro de minutos e segundos e abaixo um botão de pause/continue. Assim que o usuário clicar em iniciar exercício o cronômeto iniciará uma contagem regressiva do tempo duration */}
+                <div className="flex justify-center items-center">
+                  <Timer seconds={exercise.duration} restSeconds={exercise.rest} />
                 </div>
               </div>
             </DialogHeader>
