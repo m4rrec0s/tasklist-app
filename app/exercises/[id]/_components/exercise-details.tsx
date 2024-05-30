@@ -34,7 +34,16 @@ interface ExerciseDetailsProps {
 }
 
 const ExerciseDetails = ({ exercise }: ExerciseDetailsProps) => {
-  
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const handleButtonClick = () => {
+    setIsDialogOpen(true);
+  };
+
+  const handleDialogClose = () => {
+    setIsDialogOpen(false);
+  };
+
   return (
     <div className="py-5 px-3">
       <h1 className="font-semibold text-xl">{exercise.name}</h1>
@@ -52,7 +61,7 @@ const ExerciseDetails = ({ exercise }: ExerciseDetailsProps) => {
         </p>
       </div>
       <div className="mt-6 w-full">
-        <h3 className="text-sm ">Sobre o exercício</h3>
+        <h3 className="text-sm">Sobre o exercício</h3>
         <Card className="mt-3 p-6 pb-0">
           <CardContent>
             <div className="flex items-center justify-around">
@@ -78,25 +87,29 @@ const ExerciseDetails = ({ exercise }: ExerciseDetailsProps) => {
         </Card>
       </div>
       <div className="fixed bottom-2 left-0 w-full flex justify-center mt-6 px-5">
-        <Dialog>
-          <DialogTrigger>
-            <Button className="w-full hover:bg-hover rounded-lg">
-              Iniciar exercício
-            </Button>
-          </DialogTrigger>
-          <DialogContent className="bg-menu">
-            <DialogHeader>
-              <DialogTitle>{exercise.name}</DialogTitle>
-              <div>
-                {/* mostrar cronômetro de minutos e segundos e abaixo um botão de pause/continue. Assim que o usuário clicar em iniciar exercício o cronômeto iniciará uma contagem regressiva do tempo duration */}
-                <div className="flex justify-center items-center">
-                  <Timer seconds={exercise.duration} restSeconds={exercise.rest} />
-                </div>
-              </div>
-            </DialogHeader>
-          </DialogContent>
-        </Dialog>
+        <Button
+          className="w-full hover:bg-hover rounded-lg"
+          onClick={handleButtonClick}
+        >
+          Iniciar exercício
+        </Button>
       </div>
+      <Dialog open={isDialogOpen} onOpenChange={handleDialogClose}>
+        <DialogContent className="bg-menu h-full">
+          <DialogHeader>
+            <DialogTitle>{exercise.name}</DialogTitle>
+          </DialogHeader>
+          <div>
+            <div className="flex justify-center items-center">
+              <Timer
+                seconds={exercise.duration}
+                restSeconds={exercise.rest}
+                series={exercise.sets}
+              />
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
