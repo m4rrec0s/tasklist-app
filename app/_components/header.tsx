@@ -39,6 +39,7 @@ import { signIn, useSession, signOut } from "next-auth/react";
 
 const Header = () => {
   const { data } = useSession();
+  const undefinedIcon = "/undefined-icon.jpeg";
 
   return (
     <div>
@@ -133,8 +134,8 @@ const Header = () => {
           <DropdownMenuTrigger>
             <Button className="rounded-full w-14 h-14 bg-profile hover:bg-primary">
               <Avatar className="w-14 h-14">
-                <AvatarImage src={data?.user?.image} />
-                <AvatarFallback>CN</AvatarFallback>
+                <AvatarImage src={data?.user?.image || undefinedIcon} />
+                <AvatarFallback>{undefinedIcon}</AvatarFallback>
               </Avatar>
             </Button>
           </DropdownMenuTrigger>
@@ -146,8 +147,8 @@ const Header = () => {
                 <DropdownMenuItem>
                   <div className="flex justify-between items-center w-[350px]">
                     <div className="flex items-center gap-2">
-                      <Avatar className="w-14 h-14">
-                        <AvatarImage src={data?.user?.image} />
+                      <Avatar className="w-14 h-14 bg-primary">
+                        <AvatarImage src={data?.user?.image || undefinedIcon} />
                         <AvatarFallback>
                           {data?.user?.name?.split(" ")[0][0]}
                           {data?.user?.name?.split(" ")[1][0]}

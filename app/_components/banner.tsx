@@ -1,9 +1,10 @@
+"use client";
+
+import { useSession } from "next-auth/react";
+
 const Banner = () => {
-  const user = {
-    name: "Hanna",
-    age: 25,
-  };
-  //função para determiar qual é o dia da semana
+  const { data } = useSession();
+
   const getDay = () => {
     const date = new Date();
     const day = date.getDay();
@@ -19,7 +20,6 @@ const Banner = () => {
     return days[day];
   };
 
-  //função para determinar a hora do dia e a partir disso retornar a mensagem
   const getMessage = () => {
     const date = new Date();
     const hours = date.getHours();
@@ -32,12 +32,18 @@ const Banner = () => {
     }
   };
 
+  const firstName = data?.user?.name?.split(" ")[0];
+
   return (
     <div className="w-full flex flex-col-reverse h-[150px] bg-primary rounded-lg p-5">
       <div className="">
-        <h2 className="text-white text-lg font-bold">
-          {getMessage()}, {user.name}.
-        </h2>
+        {data?.user ? (
+          <h2 className="text-white text-lg font-bold">
+            {getMessage()}, {firstName}.
+          </h2>
+        ) : (
+          <h2 className="text-white text-lg font-bold">Bem-vindo</h2>
+        )}
         <p className="text-white text-sm font-normal">
           Hoje é {getDay()}, tenha um ótimo dia.
         </p>
