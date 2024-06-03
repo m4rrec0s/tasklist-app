@@ -35,7 +35,7 @@ const Banner = () => {
   const firstName = data?.user?.name?.split(" ")[0];
 
   return (
-    <div className="w-full flex flex-col-reverse h-[150px] bg-primary rounded-lg p-5">
+    <div className="w-full flex flex-col-reverse h-[150px] bg-primary-gradient rounded-lg p-5">
       <div className="">
         {data?.user ? (
           <h2 className="text-white text-lg font-bold">

@@ -50,90 +50,11 @@ const Header = () => {
         height={25}
         className="opacity-60"
       />
-      <div className="flex items-center justify-between mt-2">
-        <Sheet>
-          <SheetTrigger>
-            <Button
-              size="icon"
-              variant="outline"
-              className="border-none bg-transparent"
-            >
-              <MenuIcon />
-            </Button>
-          </SheetTrigger>
-
-          <SheetContent
-            className="flex flex-col justify-between bg-menu"
-            side={"left"}
-          >
-            <SheetHeader>
-              <SheetTitle className="text-left">Menu</SheetTitle>
-            </SheetHeader>
-            <div className="flex flex-col gap-8">
-              <Link href={"/"} className="flex items-center gap-2">
-                <Home size={20} />
-                <span className="text-sm">Início</span>
-              </Link>
-              <Separator className="bg-gray-400" />
-              <Link
-                href={"/pages/all-exercises"}
-                className="flex items-center gap-2"
-              >
-                <Dumbbell size={20} />
-                <span className="text-sm">Treinos</span>
-              </Link>
-              <Separator className="bg-gray-400" />
-              <Link
-                href={"/pages/graphics"}
-                className="flex items-center gap-2"
-              >
-                <BarChartBigIcon size={20} />
-                <span className="text-sm">Gráficos</span>
-              </Link>
-              <Separator className="bg-gray-400" />
-              <Link
-                href={"/pages/mensages"}
-                className="flex items-center gap-2"
-              >
-                <MessageCircleIcon size={20} />
-                <span className="text-sm">Mensagens</span>
-              </Link>
-              <Separator className="bg-gray-400 " />
-              <Link
-                href={"/pages/calendar"}
-                className="flex items-center gap-2"
-              >
-                <Calendar size={20} />
-                <span className="text-sm">Calendário</span>
-              </Link>
-            </div>
-
-            <div className="flex items-center justify-around">
-              <Link
-                href={"https://github.com/m4rrec0s/tasklist-app"}
-                target="_blank"
-                className="flex items-center rounded-lg border border-white gap-2 max-w-fit p-2"
-              >
-                <GithubIcon size={20} />
-                <span className="text-sm">Github</span>
-              </Link>
-
-              <Link
-                href={"https://www.instagram.com/marcos_henrique_eu/"}
-                target="_blank"
-                className="flex items-center rounded-lg border border-white gap-2 max-w-fit p-2"
-              >
-                <Instagram size={20} />
-                <span className="text-sm">Instagram</span>
-              </Link>
-            </div>
-          </SheetContent>
-        </Sheet>
-
+      <div className="flex justify-end">
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <Button className="rounded-full w-14 h-14 bg-profile hover:bg-primary">
-              <Avatar className="w-14 h-14">
+            <Button className="rounded-full w-12 h-12 bg-profile hover:bg-primary">
+              <Avatar className="w-12 h-12">
                 <AvatarImage src={data?.user?.image || undefinedIcon} />
                 <AvatarFallback>{undefinedIcon}</AvatarFallback>
               </Avatar>
