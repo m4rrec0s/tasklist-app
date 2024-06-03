@@ -60,7 +60,7 @@ export default async function Home() {
         <Header />
       </div>
 
-      <div className="px-2 py-2 mb-2 overflow-y-scroll [&::-webkit-scrollbar]:hidden">
+      <div className="px-2 py-2 mb-2 overflow-y-scroll [&::-webkit-scrollbar]:hidden animate-fadeIn">
         <div className="mt-10 px-2">
           <Banner />
         </div>
