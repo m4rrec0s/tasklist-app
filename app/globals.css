@@ -3,45 +3,61 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 255, 255, 255; /* dark-mode fonts */
-  --text-muted-foreground-rgb: 107, 114, 128; /* dark-mode fonts */
-  --background-start-rgb: 33, 33, 38; /* dark-mode back */
-  --background-end-rgb: 33, 33, 38; /* dark-mode back */
-  --primary-rgb: 217, 48, 79; /* dark-mode primary */
-  --menu-color-rgb: 43, 44, 49; /* dark-mode menu-color */
-  --profile-color-rgb: 43, 44, 49; /* dark-mode profile-color */
-  --menu-color-hover-rgb: 78, 78, 105; /* dark-mode menu-color-hover */
-  --hover-color-rgb: 158, 0, 42; /* dark-mode hover-color */
+  --foreground-rgb: 255, 255, 255;
+  /* dark-mode fonts */
+  --text-muted-foreground-rgb: 107, 114, 128;
+  /* dark-mode fonts */
+  --background-start-rgb: 33, 33, 38;
+  /* dark-mode back */
+  --background-end-rgb: 33, 33, 38;
+  /* dark-mode back */
+  --primary-rgb: 217, 48, 79;
+  /* dark-mode primary */
+  --menu-color-rgb: 43, 44, 49;
+  /* dark-mode menu-color */
+  --profile-color-rgb: 43, 44, 49;
+  /* dark-mode profile-color */
+  --menu-color-hover-rgb: 78, 78, 105;
+  /* dark-mode menu-color-hover */
+  --hover-color-rgb: 158, 0, 42;
+  /* dark-mode hover-color */
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    --foreground-rgb: 26, 26, 26; /* light-mode fonts */
-    --text-muted-foreground-rgb: 107, 114, 128; /* dark-mode fonts */
-    --background-start-rgb: 191, 191, 191; /* light-mode back */
-    --background-end-rgb: 255, 255, 255; /* default to white for light mode end background */
-    --primary-rgb: 255, 107, 128; /* light-mode primary */
-    --menu-color-rgb: 151, 151, 151; /* light-mode menu-color */
-    --profile-color-rgb: 216, 208, 208; /* light-mode profile-color */
-    --menu-color-hover-rgb: 207, 207, 207; /* light-mode menu-color-hover */
-    --hover-color-rgb: 255, 0, 63; /* light-mode hover-color */
+    --foreground-rgb: 26, 26, 26;
+    /* light-mode fonts */
+    --text-muted-foreground-rgb: 107, 114, 128;
+    /* dark-mode fonts */
+    --background-start-rgb: 191, 191, 191;
+    /* light-mode back */
+    --background-end-rgb: 255, 255, 255;
+    /* default to white for light mode end background */
+    --primary-rgb: 255, 107, 128;
+    /* light-mode primary */
+    --menu-color-rgb: 151, 151, 151;
+    /* light-mode menu-color */
+    --profile-color-rgb: 216, 208, 208;
+    /* light-mode profile-color */
+    --menu-color-hover-rgb: 207, 207, 207;
+    /* light-mode menu-color-hover */
+    --hover-color-rgb: 255, 0, 63;
+    /* light-mode hover-color */
   }
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -51,6 +67,7 @@ body {
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
   }
@@ -60,14 +77,27 @@ body {
   0% {
     opacity: 0;
   }
+
   40% {
     opacity: 1;
   }
+
   60% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
+  }
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  100% {
+    background-position: 100% 100%;
   }
 }
 
@@ -89,12 +119,12 @@ body {
   }
 
   .bg-menu-hover {
-      background-color: rgb(var(--menu-color-hover-rgb));
-    }
+    background-color: rgb(var(--menu-color-hover-rgb));
+  }
 
   .bg-hover {
-      background-color: rgb(var(--hover-color-rgb));
-    }
+    background-color: rgb(var(--hover-color-rgb));
+  }
 
   .text-fonts {
     color: rgb(var(--foreground-rgb));
@@ -126,5 +156,19 @@ body {
 
   .animate-fadeInOut {
     animation: fadeInOut 2s ease-in-out;
+  }
+
+  .animate-gradient {
+    animation: gradientAnimation 8s ease infinite alternate;
+  }
+
+  .bg-primary-gradient {
+    background: linear-gradient(45deg,
+        rgb(var(--primary-rgb)),
+        rgb(var(--hover-color-rgb)),
+        rgb(var(--menu-color-hover-rgb)), 
+        rgb(var(--profile-color-rgb)));
+    background-size: 600%;
+    animation: gradientAnimation 10s ease infinite alternate;
   }
 }
