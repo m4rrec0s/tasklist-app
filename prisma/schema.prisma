@@ -38,6 +38,15 @@ model Exercise {
   reps           Int
   subcategoryId  Int
   subcategory    Subcategory  @relation(fields: [subcategoryId], references: [id])
+  workouts       Workout[]
+}
+
+model Workout {
+  id           String           @id @default(uuid())
+  name         String
+  description  String
+  image        String
+  exercises    Exercise[]
 }
 
 model Account {
@@ -69,7 +78,7 @@ model Session {
  
   @@map("sessions")
 }
- 
+
 model User {
   id            String    @id @default(cuid())
   name          String?

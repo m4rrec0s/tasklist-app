@@ -424,7 +424,7 @@ const exercises = [
   {
     name: "Stiff",
     description: description,
-    image: "https://utfs.io/f/6b4d1a0b-7f5b-4a4b-9b7e-6a4f4b5c5b2e-7j7v9a.png",
+    image: "https://utfs.io/f/d962efa5-96af-40b8-b00f-bd00eb0e944e-1tcn3c.jpeg",
     duration: 60,
     rest: 30,
     sets: 3,
@@ -523,9 +523,103 @@ const exercises = [
   },
 ];
 
+const workouts = [
+  {
+    name: "Treino A: Peito e Tríceps",
+    description: "Treino focado no peito e tríceps.",
+    image: "https://utfs.io/f/af06d9f5-d23b-4f03-a69a-7adfde18da72-mzy8d3.png",
+    exercises: [
+      { name: "Supino Reto" },
+      { name: "Supino Inclinado" },
+      { name: "Supino Declinado" },
+      { name: "Crucifixo" },
+      { name: "Crucifixo Máquina" },
+      { name: "Desenvolvimento com Halteres" },
+      { name: "Tríceps Testa" },
+      { name: "Tríceps Frances" },
+      { name: "Prancha" },
+    ],
+  },
+  {
+    name: "Treino B: Costas e Bíceps",
+    description: "Treino focado nas costas e bíceps.",
+    image: "https://utfs.io/f/3eb344e2-dc24-4429-9599-f26e5e280d19-mzy8d4.png",
+    exercises: [
+      { name: "Barra Fixa" },
+      { name: "Remada Baixa" },
+      { name: "Remada Unilateral com Halteres" },
+      { name: "Remada Curvada" },
+      { name: "Rosca Direta" },
+      { name: "Rosca Concentrada" },
+      { name: "Rosca Martelo" },
+      { name: "Rosca Scott" },
+      { name: "Prancha" },
+    ],
+  },
+  {
+    name: "Treino C: Pernas",
+    description: "Treino focado nas pernas.",
+    image: "https://utfs.io/f/36de360e-e86d-46e6-8bd4-63ab329dbb59-mzy8d5.png",
+    exercises: [
+      { name: "Agachamento Livre" },
+      { name: "Cadeira Extensora" },
+      { name: "Leg Press" },
+      { name: "Agachamento Hack" },
+      { name: "Agachamento Smith" },
+      { name: "Stiff" },
+      { name: "Mesa Flexora" },
+      { name: "Levantamento Terra" },
+      { name: "Panturrilha Sentado" },
+      { name: "Panturrilha em Pé" },
+    ],
+  },
+  {
+    name: "Treino D: Ombros e Core",
+    description: "Treino focado nos ombros e core.",
+    image: "https://utfs.io/f/305ccb2a-37c2-4837-ae87-79514eba656d-mzy8d6.png",
+    exercises: [
+      { name: "Elevação Lateral" },
+      { name: "Desenvolvimento Arnold" },
+      { name: "Levantamento Frontal" },
+      { name: "Barra Fixa Pronada" },
+      { name: "Abdominal Biscicleta" },
+      { name: "Ponte com Elevação de Perna" },
+      { name: "Agachamento Sumô" },
+      { name: "Elevação Pélvica" },
+    ],
+  },
+];
+
+const createWorkouts = async () => {
+  for (const workout of workouts) {
+    const exercises = await Promise.all(
+      workout.exercises.map((exercise) =>
+        prisma.exercise.findFirst({ where: { name: exercise.name } })
+      )
+    );
+
+    const exerciseIds = exercises
+      .filter((exercise) => exercise !== null)
+      .map((exercise) => exercise.id);
+
+    await prisma.workout.create({
+      data: {
+        name: workout.name,
+        description: workout.description,
+        image: workout.image,
+        exercises: {
+          connect: exerciseIds.map((id) => ({ id })),
+        },
+      },
+    });
+    console.log(`Treino: ${workout.name} foi adicionado!`);
+  }
+};
+
 const createCategories = async () => {
   for await (const { name } of categories) {
     await prisma.category.create({ data: { name } });
+    console.log(`Categoria: ${name} foi adicionado!`);
   }
 };
 
@@ -548,6 +642,7 @@ const createSubCategories = async () => {
         categoryId: category.id,
       },
     });
+    console.log(`Sub-categoria: ${name} foi adicionado!`);
   }
 };
 
@@ -565,6 +660,7 @@ const createExercises = async () => {
     await prisma.exercise.create({
       data: { ...data, subcategoryId: subCategory.id },
     });
+    console.log(`Exercício: ${data.name} foi adicionado!`);
   }
 };
 
@@ -572,6 +668,7 @@ const main = async () => {
   await createCategories();
   await createSubCategories();
   await createExercises();
+  await createWorkouts();
 };
 
 main()
