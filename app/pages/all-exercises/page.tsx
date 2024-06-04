@@ -20,7 +20,7 @@ const AllExercises = async () => {
         <Header />
       </div>
 
-      <h2 className="mb-5 text-lg font-semibold">Treinos</h2>
+      <h2 className="pl-3 mb-5 text-lg font-semibold">Treinos</h2>
       <div className="animate-fadeIn flex-grow overflow-y-scroll [&::-webkit-scrollbar]:hidden">
         <div className="px-2 py-2 mb-2">
           <div className="grid grid-cols-2 gap-6">
