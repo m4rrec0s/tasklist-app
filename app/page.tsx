@@ -4,6 +4,7 @@ import Header from "./_components/header";
 import Link from "next/link";
 import { db } from "./_lib/prisma";
 import Menu from "./_components/menu";
+import WorkoutList from "./_components/workout-list";
 
 export default async function Home() {
   const exercises = await db.exercise.findMany({
@@ -53,6 +54,23 @@ export default async function Home() {
     },
   });
 
+  const workouts = await db.workout.findMany({
+    include: {
+      exercises: {
+        select: {
+          id: true,
+          name: true,
+          image: true,
+          subcategory: {
+            select: {
+              name: true,
+            },
+          },
+        },
+      },
+    }
+  });
+
   return (
     <div className="h-[100vh] flex flex-col justify-between">
 
@@ -78,6 +96,9 @@ export default async function Home() {
           <Link href="/" className="text-gray-400 text-sm">
             Ver mais
           </Link>
+        </div>
+        <div className="mt-6 px-2">
+          <WorkoutList workouts={workouts} />
         </div>
         <div className="mt-6 px-2 flex justify-between items-center">
           <h2 className="font-semibold text-lg">Rendimento</h2>
