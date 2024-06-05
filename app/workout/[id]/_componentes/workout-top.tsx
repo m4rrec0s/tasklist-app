@@ -1,35 +1,38 @@
 "use client";
 
 import { Button } from "@/app/_components/ui/button";
-import { Prisma } from "@prisma/client";
+import { Workout } from "@prisma/client";
 import { ChevronLeftIcon } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 interface WorkoutTopProps {
-  workout: Pick<Prisma.WorkoutGetPayload<{}>, "name" | "description" | "image">;
+  workout: Pick<Workout, "name" | "image">;
 }
 
-const WorkoutTop = ({ workout }: WorkoutTopProps) => {
-  return (
-    <div className="relative h-[260px] w-full bg-green-700">
-      <Image
-        src={workout.image}
-        alt={workout.name}
-        fill
-        className="object-cover"
-      />
+const WorkoutTop = ({workout}: WorkoutTopProps) => {
+    const router = useRouter();
 
-      <Button
-        className="absolute left-4 top-4 rounded-full bg-menu text-foreground hover:bg-hover"
-        size="icon"
-      >
-        <Link href={"/"}>
+    const handBackClick = () => router.back();
+  
+    return (
+      <div className="relative h-[360px] w-full">
+        <Image
+          src={workout.image}
+          alt={workout.name}
+          fill
+          className="object-cover"
+        />
+  
+        <Button
+          className="absolute left-4 top-4 rounded-full bg-menu text-foreground hover:bg-hover"
+          size="icon"
+          onClick={handBackClick}
+        >
           <ChevronLeftIcon />
-        </Link>
-      </Button>
-    </div>
-  );
-};
-
+        </Button>
+      </div>
+    );
+  };
+ 
 export default WorkoutTop;
