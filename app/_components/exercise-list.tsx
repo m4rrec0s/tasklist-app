@@ -1,31 +1,23 @@
+import { Prisma } from "@prisma/client";
 import ExerciseItem from "./exercise-item";
 
-type Exercise = {
-  id: string;
-  name: string;
-  description: string;
-  image: string;
-  duration: number;
-  rest: number;
-  sets: number;
-  reps: number;
-  subcategoryId: number;
-  categoryId: number;
-  category: string;
-  subcategory: {
-    name: string;
-  };
-};
+interface exerciseListProps {
+  exercises: Prisma.ExerciseGetPayload<{
+    include: {
+      subcategory: {
+        select: {
+          name: true;
+        };
+      };
+    };
+  }>[]
+}
 
-type ExerciseListProps = {
-  exercises: Exercise[];
-};
-
-const ExerciseList: React.FC<ExerciseListProps> = ({ exercises }) => {
+const ExerciseList = ({exercises}: exerciseListProps) => {
   return (
-    <div className="flex items-center gap-3 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
-      {Array.isArray(exercises) && exercises.map((exercise: Exercise) => (
-        <ExerciseItem key={exercise.id} exercise={exercise}  />
+    <div className="flex gap-4 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
+      {exercises.map((exercise) => (
+        <ExerciseItem key={exercise.id} exercise={exercise} />
       ))}
     </div>
   );

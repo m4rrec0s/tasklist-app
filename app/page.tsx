@@ -13,6 +13,7 @@ export default async function Home() {
       subcategory: {
         select: {
           name: true,
+          id: true,
         },
       },
     },

@@ -1,14 +1,21 @@
-import ExerciseItem from "@/app/_components/exercise-item";
 import Header from "@/app/_components/header";
 import Menu from "@/app/_components/menu";
+import WorkoutItem from "@/app/_components/workout-item";
 import { db } from "@/app/_lib/prisma";
 
 const AllExercises = async () => {
-  const exercises = await db.exercise.findMany({
+  const workouts = await db.workout.findMany({
     include: {
-      subcategory: {
+      exercises: {
         select: {
+          id: true,
           name: true,
+          image: true,
+          subcategory: {
+            select: {
+              name: true,
+            },
+          },
         },
       },
     },
@@ -24,10 +31,10 @@ const AllExercises = async () => {
       <div className="animate-fadeIn flex-grow overflow-y-scroll [&::-webkit-scrollbar]:hidden">
         <div className="px-2 py-2 mb-2">
           <div className="grid grid-cols-2 gap-6">
-            {exercises.map((exercises) => (
-              <ExerciseItem
-                key={exercises.id}
-                exercise={exercises}
+            {workouts.map((workouts) => (
+              <WorkoutItem
+                key={workouts.id}
+                workout={workouts}
                 className="w-full"
               />
             ))}
