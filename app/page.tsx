@@ -5,6 +5,7 @@ import Link from "next/link";
 import { db } from "./_lib/prisma";
 import Menu from "./_components/menu";
 import WorkoutList from "./_components/workout-list";
+import PerformanceList from "./_components/performance-list";
 
 export default async function Home() {
   const exercises = await db.exercise.findMany({
@@ -106,6 +107,9 @@ export default async function Home() {
           <Link href="/" className="text-gray-400 text-sm">
             Ver mais
           </Link>
+        </div>
+        <div className="mt-6 px-2">
+          <PerformanceList />
         </div>
         <div className="mt-6 px-2 flex justify-between items-center">
           <h2 className="font-semibold text-lg">Leg Day</h2>
