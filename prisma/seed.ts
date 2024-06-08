@@ -527,7 +527,7 @@ const workouts = [
   {
     name: "Treino A: Peito e Tríceps",
     description: "Treino focado no peito e tríceps.",
-    image: "https://utfs.io/f/af06d9f5-d23b-4f03-a69a-7adfde18da72-mzy8d3.png",
+    image: "https://utfs.io/f/2a468b07-32a9-4e37-b6ed-ff57fa9a943a-mzy9k5.png",
     exercises: [
       { name: "Supino Reto" },
       { name: "Supino Inclinado" },
@@ -543,7 +543,7 @@ const workouts = [
   {
     name: "Treino B: Costas e Bíceps",
     description: "Treino focado nas costas e bíceps.",
-    image: "https://utfs.io/f/3eb344e2-dc24-4429-9599-f26e5e280d19-mzy8d4.png",
+    image: "https://utfs.io/f/daf43761-886a-4263-a086-5a94dbaf857a-mzy9k6.png",
     exercises: [
       { name: "Barra Fixa" },
       { name: "Remada Baixa" },
@@ -559,7 +559,7 @@ const workouts = [
   {
     name: "Treino C: Pernas",
     description: "Treino focado nas pernas.",
-    image: "https://utfs.io/f/36de360e-e86d-46e6-8bd4-63ab329dbb59-mzy8d5.png",
+    image: "https://utfs.io/f/5fcfbc01-9b32-4da6-893a-7707a84e42e1-mzy9k7.png",
     exercises: [
       { name: "Agachamento Livre" },
       { name: "Cadeira Extensora" },
@@ -576,7 +576,7 @@ const workouts = [
   {
     name: "Treino D: Ombros e Core",
     description: "Treino focado nos ombros e core.",
-    image: "https://utfs.io/f/305ccb2a-37c2-4837-ae87-79514eba656d-mzy8d6.png",
+    image: "https://utfs.io/f/4fff6b5c-2ae2-4a7a-a06d-753a9bb2b39f-mzy9k8.png",
     exercises: [
       { name: "Elevação Lateral" },
       { name: "Desenvolvimento Arnold" },

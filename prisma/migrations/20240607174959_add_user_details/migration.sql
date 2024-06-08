@@ -75,6 +75,10 @@ CREATE TABLE "users" (
     "email" TEXT,
     "email_verified" TIMESTAMP(3),
     "image" TEXT,
+    "weight" DECIMAL(5,2),
+    "height" DECIMAL(5,2),
+    "age" INTEGER,
+    "gender" TEXT,
 
     CONSTRAINT "users_pkey" PRIMARY KEY ("id")
 );
