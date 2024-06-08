@@ -6,6 +6,7 @@ import { db } from "./_lib/prisma";
 import Menu from "./_components/menu";
 import WorkoutList from "./_components/workout-list";
 import PerformanceList from "./_components/performance-list";
+import Modal from "./_components/modal";
 
 export default async function Home() {
   const exercises = await db.exercise.findMany({
@@ -75,6 +76,7 @@ export default async function Home() {
 
   return (
     <div className="h-[100vh] flex flex-col justify-between">
+      {/* <Modal  /> */}
 
       <div className="py-2 px-2">
         <Header />
