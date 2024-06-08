@@ -6,7 +6,7 @@ import {
   Dumbbell,
   Home,
   MenuIcon,
-  MessageCircleIcon,
+  SearchIcon,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
@@ -23,7 +23,7 @@ const Menu = ({ className }: MenuProps) => {
     { href: "/", icon: Home, label: "Início" },
     { href: "/pages/all-exercises", icon: Dumbbell, label: "Treinos" },
     { href: "/pages/graphics", icon: BarChartBigIcon, label: "Gráficos" },
-    { href: "/pages/mensages", icon: MessageCircleIcon, label: "Mensagens" },
+    { href: "/pages/search", icon: SearchIcon, label: "Buscar" },
     { href: "/pages/calendar", icon: Calendar, label: "Calendário" },
     { href: "/pages/more", icon: MenuIcon, label: "Mais" }
   ];

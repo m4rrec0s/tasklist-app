@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import { db } from "@/app/_lib/prisma";
 import { notFound } from "next/navigation";
 import WorkoutTop from "./_componentes/workout-top";
