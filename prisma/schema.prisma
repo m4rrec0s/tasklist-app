@@ -85,12 +85,16 @@ model User {
   email         String?   @unique
   emailVerified DateTime? @map("email_verified")
   image         String?
+  weight        Decimal?  @db.Decimal(5, 2)
+  height        Decimal?  @db.Decimal(5, 2)
+  age           Int?
+  gender        String?
   accounts      Account[]
   sessions      Session[]
- 
+
   @@map("users")
 }
- 
+
 model VerificationToken {
   identifier String
   token      String
