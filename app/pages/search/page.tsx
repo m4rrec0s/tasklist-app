@@ -12,6 +12,9 @@ const SearchPage = () => {
         <div className="px-5 py-6">
           <Search />
         </div>
+        <div className="flex flex-col justify-center items-center h-[600px]">
+            <h2 className="mb-5 text-sm font-normal text-muted-foreground ">Pesquise por exercícios</h2>
+        </div>
       </div>
       <div>
         <Menu />

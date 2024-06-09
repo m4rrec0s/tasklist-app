@@ -1,20 +1,38 @@
-import { Menu, SearchIcon } from "lucide-react";
-import Header from "./header";
+"use client";
+
+import { SearchIcon } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import { FormEventHandler, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const Search = () => {
+  const router = useRouter();
+  const [search, setSearch] = useState("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+  };
+
+  const handleSearchSubmit : FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+    
+    if (!search) return;
+    router.push(`/exercises?search=${search}`)
+  };
+
   return (
-    <div className="px-2 mb-2 w-full space-x-2 flex">
+    <form className="flex gap-2" onSubmit={handleSearchSubmit}>
       <Input
-        type="search"
-        placeholder="Exercícios..."
-        className="rounded-lg focus:border-solid focus:border-2"
+        placeholder="Buscar Exercícios..."
+        className="border-none bg-menu rounded-lg focus:border-solid focus:border-rose-500"
+        onChange={handleChange}
+        value={search}
       />
-      <Button className="rounded-lg p-2 hover:bg-hover" variant="ghost">
-        <SearchIcon size={24} />
+      <Button size="icon" type="submit" className="rounded-lg">
+        <SearchIcon size={20} />
       </Button>
-    </div>
+    </form>
   );
 };
 
