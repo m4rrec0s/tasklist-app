@@ -1,17 +1,17 @@
-import { Exercise, Prisma } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "../_lib/utils";
 
 interface ExerciseItemProps {
   exercise: Prisma.ExerciseGetPayload<{
-    include: {
-      subcategory: {
-        select: {
-          name: true;
-        };
-      };
-    };
+    // include: {
+    //   subcategory: {
+    //     select: {
+    //       name: true;
+    //     };
+    //   };
+    // };
   }>;
   className?: string;
 }
@@ -30,9 +30,9 @@ const ExerciseItem = ({ exercise, className }: ExerciseItemProps) => {
         </div>
         <div>
           <h2 className="truncate text-sm">{exercise.name}</h2>
-          <div className="flex items-center gap-1">
+          {/* <div className="flex items-center gap-1">
             <span className="text-xs text-gray-400 first-letter:uppercase">{exercise.subcategory.name}</span>
-          </div>
+          </div> */}
         </div>
       </div>
     </Link>
