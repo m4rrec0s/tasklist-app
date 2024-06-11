@@ -30,7 +30,7 @@ const WorkoutItem = ({ workout, className }: WorkoutItemProps) => {
         href={`/workout/${workout.id}`}
       >
         <div className="w-full h-0 flex-grow space-y-2">
-          <div className="relative aspect-video bg-green-700 rounded-lg h-[120px]">
+          <div className="relative aspect-video bg-green-700 rounded-lg h-[120px] w-full">
             <Image
               src={workout.image}
               alt={workout.name}
