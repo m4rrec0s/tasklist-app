@@ -3,28 +3,13 @@
 import Image from "next/image";
 import { Button } from "./ui/button";
 import {
-  BarChartBigIcon,
-  Calendar,
-  Dumbbell,
-  GithubIcon,
   HeartIcon,
-  Home,
-  Instagram,
   LogInIcon,
   LogOutIcon,
-  MenuIcon,
-  MessageCircleIcon,
   SettingsIcon,
   Stethoscope,
 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "./ui/sheet";
 import Link from "next/link";
 import { Separator } from "./ui/separator";
 import {
@@ -48,7 +33,7 @@ const Header = () => {
         alt="tasklist"
         width={65}
         height={25}
-        className="opacity-60"
+        className="flex lg:hidden opacity-60 "
       />
       <div className="flex justify-end">
         <DropdownMenu>
