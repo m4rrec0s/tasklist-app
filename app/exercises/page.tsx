@@ -1,7 +1,6 @@
 "use client";
 
 import { notFound, useSearchParams } from "next/navigation";
-import Header from "../_components/header";
 import ExerciseItem from "../_components/exercise-item";
 import { Exercise } from "@prisma/client";
 import { useEffect, useState } from "react";
