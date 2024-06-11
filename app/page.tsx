@@ -71,19 +71,13 @@ export default async function Home() {
           },
         },
       },
-    }
+    },
   });
 
   return (
-    <div className="h-[100vh] flex flex-col justify-between">
-      {/* <Modal  /> */}
-
-      <div className="py-2 px-2">
-        <Header />
-      </div>
-
-      <div className="px-2 py-2 mb-2 overflow-y-scroll [&::-webkit-scrollbar]:hidden animate-fadeIn">
-        <div className="mt-10 px-2">
+    <>
+      <div>
+        <div className="mb-8 px-2">
           <Banner />
         </div>
         <div className="mt-6 px-2 flex justify-between items-center">
@@ -104,15 +98,15 @@ export default async function Home() {
         <div className="mt-6 px-2">
           <WorkoutList workouts={workouts} />
         </div>
-        <div className="mt-6 px-2 flex justify-between items-center">
-          <h2 className="font-semibold text-lg">Rendimento</h2>
-          <Link href="/" className="text-gray-400 text-sm">
-            Ver mais
-          </Link>
-        </div>
-        <div className="mt-6 px-2">
-          <PerformanceList />
-        </div>
+        {/* <div className="mt-6 px-2 flex justify-between items-center">
+            <h2 className="font-semibold text-lg">Rendimento</h2>
+            <Link href="/" className="text-gray-400 text-sm">
+              Ver mais
+            </Link>
+          </div> */}
+        {/* <div className="mt-6 px-2">
+            <PerformanceList />
+          </div> */}
         <div className="mt-6 px-2 flex justify-between items-center">
           <h2 className="font-semibold text-lg">Leg Day</h2>
           <Link href="/" className="text-gray-400 text-sm">
@@ -133,9 +127,7 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="z-10">
-        <Menu />
-      </div>
-    </div>
+      {/* Tablets e Computadores */}
+    </>
   );
 }
