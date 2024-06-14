@@ -19,6 +19,11 @@
     "not chrome <= 120",
     "not edge <= 120",
     "not opera <= 104",
-    "not samsung <= 23"
+    "not samsung <= 23",
+    "not and_chr <= 125",
+    "not chrome <= 125",
+    "not edge <= 125",
+    "not opera <= 110",
+    "not samsung <= 25"
   ]
 }
