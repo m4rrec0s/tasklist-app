@@ -1,12 +1,17 @@
 "use client";
 
-import { notFound, useSearchParams } from "next/navigation";
+import { notFound, useRouter, useSearchParams } from "next/navigation";
 import ExerciseItem from "../_components/exercise-item";
 import { Exercise } from "@prisma/client";
 import { useEffect, useState } from "react";
 import { searchForExercises } from "./_actions/search";
+import { Button } from "../_components/ui/button";
+import { ChevronLeftIcon } from "lucide-react";
 
 const Exercises = () => {
+  const router = useRouter();
+  const handBackClick = () => router.back();
+
   const searchParams = useSearchParams();
   const [exercises, setexercises] = useState<Exercise[]>([]);
   const searchFor = searchParams.get("search");
@@ -30,9 +35,18 @@ const Exercises = () => {
       <div className="px-5 py-2">
         {exercises.length > 0 ? (
           <>
-            <h2 className="mb-5 text-lg font-semibold">
-              Exercícios Encontrados
-            </h2>
+            <div className="flex mt-3 gap-2 items-center mb-5">
+              <Button
+                className="rounded-full bg-menu text-foreground hover:bg-hover"
+                size="icon"
+                onClick={handBackClick}
+              >
+                <ChevronLeftIcon />
+              </Button>
+              <h1 className="text-lg font-semibold">
+                Resultados para `{searchFor}`
+              </h1>
+            </div>
             <div className="flex flex-col gap-6">
               {exercises.map((exercise) => (
                 <ExerciseItem

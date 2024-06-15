@@ -2,16 +2,10 @@ import { Prisma } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "../_lib/utils";
+import { convertDuration } from "../_helpers/timer";
 
 interface ExerciseItemProps {
   exercise: Prisma.ExerciseGetPayload<{
-    include?: {
-      subcategory?: {
-        select: {
-          name: true;
-        };
-      };
-    };
   }>;
   className?: string;
 }
@@ -31,10 +25,8 @@ const ExerciseItem = ({ exercise, className }: ExerciseItemProps) => {
         <div>
           <h2 className="truncate text-sm">{exercise.name}</h2>
           <div className="flex items-center gap-1">
-            {exercise.subcategory? (
-              <span className="text-xs text-gray-400 first-letter:uppercase">{exercise.subcategory.name}</span>
-            ): (
-              <span className="text-xs text-gray-400"></span>
+            {exercise.duration && (
+              <span className="text-xs text-gray-400 first-letter:uppercase">{convertDuration(exercise.duration)}</span>
             )}
           </div>
         </div>
