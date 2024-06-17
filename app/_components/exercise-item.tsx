@@ -26,7 +26,7 @@ const ExerciseItem = ({ exercise, className }: ExerciseItemProps) => {
           <h2 className="truncate text-sm">{exercise.name}</h2>
           <div className="flex items-center gap-1">
             {exercise.duration && (
-              <span className="text-xs text-gray-400 first-letter:uppercase">{convertDuration(exercise.duration)}</span>
+              <span className="text-xs text-gray-400 first-letter:uppercase">Duração Média: {convertDuration(exercise.duration * exercise.reps)}</span>
             )}
           </div>
         </div>
