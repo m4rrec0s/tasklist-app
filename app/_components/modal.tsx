@@ -1,6 +1,3 @@
-"use client";
-
-import { useSession } from "next-auth/react";
 import { Button } from "./ui/button";
 import {
   Dialog,
@@ -8,7 +5,6 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "./ui/dialog";
 import { Input } from "./ui/input";
 import {
@@ -18,39 +14,37 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
-import { Form } from "./ui/form";
+
+import createData from "../_actions/form-submit";
 
 const Modal = () => {
-  const { data } = useSession();
-  const handleSubmitClick = () => {};
-
   return (
     <>
-      {data?.user ? (
-        <Dialog open>
-          <DialogContent className="bg-menu">
-            <DialogHeader>
-              <DialogTitle>Complete seu cadastro</DialogTitle>
-              <DialogDescription>
-                Precisamos de mais algumas informações para continuar.
-              </DialogDescription>
-            </DialogHeader>
-            <Input type="date" placeholder="Nascimento" />
-            <Input type="number" placeholder="Altura" />
-            <Input type="number" placeholder="Peso" />
-            <Select>
-              <SelectTrigger className="w-[180px]">
+        <Dialog>
+          <form action={createData.createAdditionalData}>
+            <DialogContent className="bg-menu">
+              <DialogHeader>
+                <DialogTitle>Complete seu cadastro</DialogTitle>
+                <DialogDescription>
+                  Precisamos de mais algumas informações para continuar.
+                </DialogDescription>
+              </DialogHeader>
+              <Input type="date" placeholder="Nascimento" name="age" required/>
+              <Input type="number" placeholder="Altura" name="height" required/>
+              <Input type="number" placeholder="Peso" name="weight" required/>
+              <Select name="gender" required>
+                <SelectTrigger>
                 <SelectValue placeholder="Gênero" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="Male">Masculino</SelectItem>
-                <SelectItem value="Female">Feminino</SelectItem>
-              </SelectContent>
-            </Select>
-            <Button onClick={handleSubmitClick}>OK</Button>
-          </DialogContent>
+                  <SelectContent className="w-[180px] bg-menu">
+                    <SelectItem value="Male">Masculino</SelectItem>
+                    <SelectItem value="Female">Feminino</SelectItem>
+                  </SelectContent>
+                </SelectTrigger>
+              </Select>
+              <Button type="submit" className="">OK</Button>
+            </DialogContent>
+          </form>
         </Dialog>
-      ) : null}
     </>
   );
 };
