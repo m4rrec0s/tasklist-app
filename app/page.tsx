@@ -75,7 +75,6 @@ export default async function Home() {
 
   return (
     <>
-    <Modal />
       <div className="h-[100vh] flex lg:hidden flex-col justify-between">
         <div className="mt-2 mb-8 px-2">
           <Header />
