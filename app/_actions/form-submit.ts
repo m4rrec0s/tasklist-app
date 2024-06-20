@@ -1,34 +1,33 @@
-import { Decimal } from "@prisma/client/runtime/library";
+"use server";
 import { db } from "../_lib/prisma";
 
-async function createAdditionalData(formData: FormData) {
-    "use server";
+export async function createAdditionalData(data: FormData) {
+  const date = data.get("age") as unknown as number;
+  const birthDate = new Date(date);
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+  if (
+    monthDiff < 0 ||
+    (monthDiff === 0 && today.getDate() < birthDate.getDate())
+  ) {
+    age--;
+  }
 
-    const date = formData.get("age") as unknown as number;
-    const today = new Date();
-    const birthDate = new Date(date);
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const monthDiff = today.getMonth() - birthDate.getMonth();
-    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
-    }
-    
-    const gender = formData.get("gender") as string;
-    const height = formData.get("height") as unknown as Decimal;
-    const weight = formData.get("weight") as unknown as Decimal;
+  const gender = data.get("gender") as string;
 
-    await db.user.create({
-        data: {
-            age,
-            gender,
-            height,
-            weight,
-        }
-    })
+  const height = parseFloat(data.get("height") as string);
+  const weight = parseFloat(data.get("weight") as string);
+
+  await db.user.update({
+    where: { id: "1" },
+    data: {
+      age,
+      gender,
+      height,
+      weight,
+    },
+  });
+
+  console.log(Object.fromEntries(data));
 }
-
-const createData = {
-    createAdditionalData
-}
-
-export default createData;
