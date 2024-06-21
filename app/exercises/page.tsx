@@ -32,10 +32,10 @@ const Exercises = () => {
 
   return (
     <>
-      <div className="px-5 py-2">
+      <div className="px-5 py-2 w-[100vw] flex flex-col items-center ">
         {exercises.length > 0 ? (
           <>
-            <div className="flex mt-3 gap-2 items-center mb-5">
+            <div className="flex mt-3 gap-2 items-center mb-5 w-full">
               <Button
                 className="rounded-full bg-menu text-foreground hover:bg-hover"
                 size="icon"
@@ -47,7 +47,7 @@ const Exercises = () => {
                 Resultados para `{searchFor}`
               </h1>
             </div>
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-6 w-full max-w-[500px]">
               {exercises.map((exercise) => (
                 <ExerciseItem
                   key={exercise.id}
