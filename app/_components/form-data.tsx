@@ -37,7 +37,7 @@ const FormDataA = () => {
           </DialogDescription>
         </DialogHeader>
         <form action={handleSubmit}>
-          <Input type="date" placeholder="Nascimento" name="age" required />
+          <Input type="date" placeholder="Nascimento" value={session?.age} name="age" required />
           <Input type="text" placeholder="Altura" name="height" required />
           <Input type="text" placeholder="Peso" name="weight" required />
           <Select name="gender" required>

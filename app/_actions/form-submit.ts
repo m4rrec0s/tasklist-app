@@ -29,5 +29,5 @@ export async function createAdditionalData(data: FormData) {
     },
   });
 
-  console.log(u)
+  console.log(u);
 }

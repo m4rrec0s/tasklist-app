@@ -3,6 +3,7 @@ import GoogleProvider from "next-auth/providers/google"
 import { PrismaAdapter } from "@auth/prisma-adapter"
 import { db } from "@/app/_lib/prisma"
 import { Adapter } from "next-auth/adapters"
+import { Decimal } from "@prisma/client/runtime/library"
 
 const handler = NextAuth({
     adapter: PrismaAdapter(db) as Adapter,
@@ -16,6 +17,10 @@ const handler = NextAuth({
     async session({ session, token, user }) {
       const userFinded = await db.user.findUnique({ where: { email: session.user?.email as string }})
       session.id = userFinded?.id
+      session.age = userFinded?.age as number
+      session.gender = userFinded?.gender as string
+      session.height = userFinded?.height as Decimal
+      session.weight = userFinded?.weight as Decimal
       return session
     }
   },
@@ -24,7 +29,11 @@ const handler = NextAuth({
 
 declare module "next-auth" {
   interface Session {
-    id?: string
+    id?: string;
+    gender?: string;
+    age? : number;
+    height?: Decimal;
+    weight?: Decimal;
   }
 }
 

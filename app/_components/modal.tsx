@@ -1,12 +1,13 @@
 "use client";
 
+import { useSession } from "next-auth/react";
 import FormData from "./form-data";
-import { useState } from "react";
 
 const Modal = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const {data} = useSession();
+  console.log(data);
   
-  return <>{isOpen ? <FormData /> : null}</>;
+  return <>{(!data?.age || !data?.gender || !data?.height || !data?.weight) ? (<FormData />) : null}</>;
 };
 
 export default Modal;
