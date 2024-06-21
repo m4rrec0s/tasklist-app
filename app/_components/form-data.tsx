@@ -38,7 +38,7 @@ const FormDataA = () => {
           </DialogDescription>
         </DialogHeader>
         <form action={handleSubmit}>
-          <Input type="date" placeholder="Nascimento" value={session?.age} name="age" required />
+          <Input type="date" placeholder="Nascimento" name="age" required />
           <Input type="text" placeholder="Altura" name="height" required />
           <Input type="text" placeholder="Peso" name="weight" required />
           <Select name="gender" required>
@@ -50,7 +50,7 @@ const FormDataA = () => {
               </SelectContent>
             </SelectTrigger>
           </Select>
-          <Button type="submit" className="">
+          <Button type="submit" className="w-full mt-4 hover:bg-hover rounded-lg">
             OK
           </Button>
         </form>

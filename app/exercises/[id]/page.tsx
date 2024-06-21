@@ -4,36 +4,38 @@ import ExerciseImage from "./_components/exercise-image";
 import ExerciseDetails from "./_components/exercise-details";
 
 interface ExercisePageProps {
-    params: {
-        id: string,
-    };
+  params: {
+    id: string;
+  };
 }
 
 const ExercisePage = async ({ params: { id } }: ExercisePageProps) => {
-    const exercise = await db.exercise.findUnique({
-        where: {
-            id,
-        },
+  const exercise = await db.exercise.findUnique({
+    where: {
+      id,
+    },
+    include: {
+      subcategory: {
         include: {
-            subcategory: {
-                include: {
-                    category: true,
-                }
-            },
+          category: true,
         },
-    });
+      },
+    },
+  });
 
-    if (!exercise) {
-        return notFound();
-    }
+  if (!exercise) {
+    return notFound();
+  }
 
-    return (
-        <div>
-            <ExerciseImage exercise={exercise} />
+  return (
+    <div className="flex justify-center w-full">
+      <div className="max-w-[650px]">
+        <ExerciseImage exercise={exercise} />
 
-            <ExerciseDetails exercise={exercise} />
-        </div>
-    );
-}
- 
+        <ExerciseDetails exercise={exercise} />
+      </div>
+    </div>
+  );
+};
+
 export default ExercisePage;
