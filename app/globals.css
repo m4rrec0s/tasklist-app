@@ -21,6 +21,7 @@
   /* dark-mode menu-color-hover */
   --hover-color-rgb: 158, 0, 42;
   /* dark-mode hover-color */
+  --muted-color-rgb: 107, 114, 120;
 }
 
 @media (prefers-color-scheme: light) {
@@ -43,6 +44,7 @@
     /* light-mode menu-color-hover */
     --hover-color-rgb: 255, 0, 63;
     /* light-mode hover-color */
+    --muted-color-rgb: 107, 114, 120;
   }
 }
 
@@ -142,8 +144,16 @@ body {
     border-radius: 9999px;
   }
 
+  .text-muted {
+    color: rgb(var(--muted-color-rgb));
+  }
+
   .text-muret-forground {
     color: rgb(var(--foreground-rgb));
+  }
+
+  .border-muted-foreground {
+    border-color: rgb(var(--text-muted-foreground-rgb));
   }
 
   .animate-fadeIn {
