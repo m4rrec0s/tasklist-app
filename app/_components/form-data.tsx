@@ -1,3 +1,6 @@
+'use client'
+
+import { useSession, SessionProviderProps } from "next-auth/react";
 import { createAdditionalData } from "../_actions/form-submit";
 import { Button } from "./ui/button";
 import {
@@ -16,7 +19,14 @@ import {
   SelectValue,
 } from "./ui/select";
 
-const FormData = () => {
+const FormDataA = () => {
+  const { data: session } = useSession()
+
+  const handleSubmit = (data: FormData) => {
+    data.append('id', session?.id as string)
+    createAdditionalData(data)
+  }
+
   return (
     <Dialog open>
       <DialogContent className="bg-menu">
@@ -26,7 +36,7 @@ const FormData = () => {
             Precisamos de mais algumas informações para continuar.
           </DialogDescription>
         </DialogHeader>
-        <form action={createAdditionalData}>
+        <form action={handleSubmit}>
           <Input type="date" placeholder="Nascimento" name="age" required />
           <Input type="text" placeholder="Altura" name="height" required />
           <Input type="text" placeholder="Peso" name="weight" required />
@@ -48,4 +58,4 @@ const FormData = () => {
   );
 };
 
-export default FormData;
+export default FormDataA;

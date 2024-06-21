@@ -12,7 +12,20 @@ const handler = NextAuth({
         clientSecret: process.env.GOOGLE_CLIENT_SECRET as string
     })
   ],
+  callbacks: {
+    async session({ session, token, user }) {
+      const userFinded = await db.user.findUnique({ where: { email: session.user?.email as string }})
+      session.id = userFinded?.id
+      return session
+    }
+  },
   secret: process.env.NEXTAUTH_SECRET,
 })
+
+declare module "next-auth" {
+  interface Session {
+    id?: string
+  }
+}
 
 export { handler as GET, handler as POST }

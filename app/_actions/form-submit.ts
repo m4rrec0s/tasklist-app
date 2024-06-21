@@ -19,8 +19,8 @@ export async function createAdditionalData(data: FormData) {
   const height = parseFloat(data.get("height") as string);
   const weight = parseFloat(data.get("weight") as string);
 
-  await db.user.update({
-    where: { id: "1" },
+  const u = await db.user.update({
+    where: { id: data.get('id') as string },
     data: {
       age,
       gender,
@@ -29,5 +29,5 @@ export async function createAdditionalData(data: FormData) {
     },
   });
 
-  console.log(Object.fromEntries(data));
+  console.log(u)
 }
