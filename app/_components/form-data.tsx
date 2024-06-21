@@ -25,6 +25,7 @@ const FormDataA = () => {
   const handleSubmit = (data: FormData) => {
     data.append('id', session?.id as string)
     createAdditionalData(data)
+    window.location.reload();
   }
 
   return (
