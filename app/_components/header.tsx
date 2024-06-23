@@ -61,7 +61,7 @@ const Header = () => {
               </Avatar>
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="bg-menu p-5">
+          <DropdownMenuContent className="bg-profile p-5 rounded-lg border-gray-500">
             {data?.user ? (
               <>
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -90,7 +90,7 @@ const Header = () => {
                       </div>
                       <Button
                         size="icon"
-                        className="rounded-lg hover:bg-menu-hover"
+                        className="rounded-lg hover:bg-hover"
                         onClick={() => signOut()}
                       >
                         <LogOutIcon />

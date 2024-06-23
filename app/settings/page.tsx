@@ -28,15 +28,6 @@ const SettingsPage = () => {
     setIsThemeDialogOpen(false);
   };
 
-  const [theme, setTheme] = useState("");
-  useEffect(() => {
-    if (theme === "light") {
-      document.documentElement.classList.add("light");
-    } else {
-      document.documentElement.classList.remove("light");
-    }
-  }, [theme]);
-
   return (
     <div className="py-5 px-3">
       <div className="flex items-center gap-4 mb-2">
@@ -55,6 +46,7 @@ const SettingsPage = () => {
         onClick={handleDialogNotificationOpen}
         variant="ghost"
         className="mt-6 mb-0 text-left border-none outline-none p-0"
+        disabled={!handleDialogNotificationOpen}
       >
         <div className="flex flex-col gap-4 justify-between">
           <div className="flex gap-2">
@@ -116,9 +108,6 @@ const SettingsPage = () => {
           <RadioGroup
             defaultValue="dark"
             className="gap-2"
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-              setTheme(event.target.value)
-            }
           >
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="dark" id="option-dark" />

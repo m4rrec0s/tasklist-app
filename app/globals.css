@@ -3,17 +3,17 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 255, 255, 255;
-  /* dark-mode fonts */
+  --foreground-rgb: 245, 245, 245;
+  /* Lighter text for better contrast */
   --text-muted-foreground-rgb: 107, 114, 128;
   /* dark-mode fonts */
-  --background-start-rgb: 33, 33, 38;
-  /* dark-mode back */
-  --background-end-rgb: 33, 33, 38;
-  /* dark-mode back */
+  --background-start-rgb: 23, 23, 28;
+  /* Darker background */
+  --background-end-rgb: 23, 23, 28;
+  /* Darker background (consistent) */
   --primary-rgb: 217, 48, 79;
   /* dark-mode primary */
-  --menu-color-rgb: 43, 44, 49;
+  --menu-color-rgb: 43, 45, 59;
   /* dark-mode menu-color */
   --profile-color-rgb: 43, 44, 49;
   /* dark-mode profile-color */
@@ -30,15 +30,15 @@
     /* light-mode fonts */
     --text-muted-foreground-rgb: 107, 114, 128;
     /* dark-mode fonts */
-    --background-start-rgb: 191, 191, 191;
+    --background-start-rgb: 225, 225, 225;
     /* light-mode back */
-    --background-end-rgb: 255, 255, 255;
-    /* default to white for light mode end background */
+    --background-end-rgb: 225, 225, 225;
+    /* light-mode back (consistent) */
     --primary-rgb: 255, 107, 128;
     /* light-mode primary */
-    --menu-color-rgb: 151, 151, 151;
+    --menu-color-rgb: 150, 150, 150;
     /* light-mode menu-color */
-    --profile-color-rgb: 216, 208, 208;
+    --profile-color-rgb: 125, 125, 125;
     /* light-mode profile-color */
     --menu-color-hover-rgb: 207, 207, 207;
     /* light-mode menu-color-hover */
@@ -46,13 +46,6 @@
     /* light-mode hover-color */
     --muted-color-rgb: 107, 114, 120;
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
 @keyframes fadeIn {
@@ -103,9 +96,18 @@ body {
   }
 }
 
+body {
+  background: rgb(var(--background-start-rgb));
+  color: rgb(var(--foreground-rgb));
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .bg-background {
+    background-color: rgb(var(--background-start-rgb));
   }
 
   .bg-primary {
@@ -176,7 +178,7 @@ body {
     background: linear-gradient(45deg,
         rgb(var(--primary-rgb)),
         rgb(var(--hover-color-rgb)),
-        rgb(var(--menu-color-hover-rgb)), 
+        rgb(var(--menu-color-hover-rgb)),
         rgb(var(--profile-color-rgb)));
     background-size: 600%;
     animation: gradientAnimation 10s ease infinite alternate;

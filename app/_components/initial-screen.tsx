@@ -13,7 +13,7 @@ const InitialScreen = () => {
   return (
     <>
       {!data?.user ? (
-        <main className="absolute bottom-0 p-8 left-0 h-[100vh] w-[100vw] bg-menu z-10 flex items-center justify-center">
+        <main className="absolute bottom-0 p-8 left-0 h-[100vh] w-[100vw] bg-background z-10 flex items-center justify-center">
           <div className="flex flex-col items-center">
             <Image
               className="w-[230px] h-[230px]"
@@ -26,9 +26,9 @@ const InitialScreen = () => {
             <p className="font-normal text-sm text-muted">
               Seu melhor companheiro de academia!
             </p>
-            <div className="flex flex-col text-white font-semibold mt-8 h-52 w-full">
+            <div className="flex flex-col font-semibold mt-8 h-52 w-full ">
               <Button
-                className="w-full p-8 rounded-lg bg-transparent border border-muted-foreground gap-2 hover:bg-gray-500"
+                className="w-full p-8 rounded-lg bg-transparent border border-muted-foreground gap-2 hover:bg-gray-500 hover:text-white"
                 onClick={() => signIn()}
               >
                 <ChromeIcon className="w-6 h-6 mr-2" />
