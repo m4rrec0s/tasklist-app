@@ -49,7 +49,7 @@ const Header = () => {
         alt="tasklist"
         width={65}
         height={25}
-        className="flex lg:hidden opacity-60 "
+        className="flex lg:hidden dark:opacity-60"
       />
       <div className="flex justify-end">
         <DropdownMenu>

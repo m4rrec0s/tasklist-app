@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Dialog, DialogContent, DialogTitle } from "../_components/ui/dialog";
 import { useEffect, useState } from "react";
 import { RadioGroup, RadioGroupItem } from "../_components/ui/radio-group";
+import ThemeToggle from "../_components/theme-toggle";
 
 const SettingsPage = () => {
   const [isNotificationDialogOpen, setIsNotificationDialogOpen] =
@@ -104,20 +105,8 @@ const SettingsPage = () => {
 
       <Dialog open={isThemeDialogOpen} onOpenChange={handleDialogThemeClose}>
         <DialogContent className="bg-menu">
-          <DialogTitle>Notificações</DialogTitle>
-          <RadioGroup
-            defaultValue="dark"
-            className="gap-2"
-          >
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="dark" id="option-dark" />
-              <label htmlFor="option-dark">Escuro</label>
-            </div>
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="light" id="option-light" />
-              <label htmlFor="option-light">Claro</label>
-            </div>
-          </RadioGroup>
+          <DialogTitle>Tema</DialogTitle>
+          <ThemeToggle />
         </DialogContent>
       </Dialog>
     </div>
