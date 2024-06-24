@@ -3,47 +3,47 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 245, 245, 245;
-  /* Lighter text for better contrast */
+  --foreground-rgb: 26, 26, 26;
+  /* light-mode fonts */
   --text-muted-foreground-rgb: 107, 114, 128;
   /* dark-mode fonts */
-  --background-start-rgb: 23, 23, 28;
-  /* Darker background */
-  --background-end-rgb: 23, 23, 28;
-  /* Darker background (consistent) */
-  --primary-rgb: 217, 48, 79;
-  /* dark-mode primary */
-  --menu-color-rgb: 43, 45, 59;
-  /* dark-mode menu-color */
-  --profile-color-rgb: 43, 44, 49;
-  /* dark-mode profile-color */
-  --menu-color-hover-rgb: 78, 78, 105;
-  /* dark-mode menu-color-hover */
-  --hover-color-rgb: 158, 0, 42;
-  /* dark-mode hover-color */
+  --background-start-rgb: 225, 225, 225;
+  /* light-mode back */
+  --background-end-rgb: 225, 225, 225;
+  /* light-mode back (consistent) */
+  --primary-rgb: 255, 107, 128;
+  /* light-mode primary */
+  --menu-color-rgb: 150, 150, 150;
+  /* light-mode menu-color */
+  --profile-color-rgb: 125, 125, 125;
+  /* light-mode profile-color */
+  --menu-color-hover-rgb: 207, 207, 207;
+  /* light-mode menu-color-hover */
+  --hover-color-rgb: 255, 0, 63;
+  /* light-mode hover-color */
   --muted-color-rgb: 107, 114, 120;
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 26, 26, 26;
-    /* light-mode fonts */
+    --foreground-rgb: 245, 245, 245;
+    /* Lighter text for better contrast */
     --text-muted-foreground-rgb: 107, 114, 128;
     /* dark-mode fonts */
-    --background-start-rgb: 225, 225, 225;
-    /* light-mode back */
-    --background-end-rgb: 225, 225, 225;
-    /* light-mode back (consistent) */
-    --primary-rgb: 255, 107, 128;
-    /* light-mode primary */
-    --menu-color-rgb: 150, 150, 150;
-    /* light-mode menu-color */
-    --profile-color-rgb: 125, 125, 125;
-    /* light-mode profile-color */
-    --menu-color-hover-rgb: 207, 207, 207;
-    /* light-mode menu-color-hover */
-    --hover-color-rgb: 255, 0, 63;
-    /* light-mode hover-color */
+    --background-start-rgb: 23, 23, 28;
+    /* Darker background */
+    --background-end-rgb: 23, 23, 28;
+    /* Darker background (consistent) */
+    --primary-rgb: 217, 48, 79;
+    /* dark-mode primary */
+    --menu-color-rgb: 43, 45, 59;
+    /* dark-mode menu-color */
+    --profile-color-rgb: 43, 44, 49;
+    /* dark-mode profile-color */
+    --menu-color-hover-rgb: 78, 78, 105;
+    /* dark-mode menu-color-hover */
+    --hover-color-rgb: 158, 0, 42;
+    /* dark-mode hover-color */
     --muted-color-rgb: 107, 114, 120;
   }
 }
