@@ -24,7 +24,7 @@ const Menu = ({ className }: MenuProps) => {
 
   const links = [
     { href: "/", icon: Home, label: "Início" },
-    { href: "/pages/all-exercises", icon: Dumbbell, label: "Treinos" },
+    { href: "/pages/workouts", icon: Dumbbell, label: "Treinos" },
     { href: "/pages/graphics", icon: BarChartBigIcon, label: "Gráficos" },
     { href: "/pages/search", icon: SearchIcon, label: "Buscar" },
     { href: "/pages/calendar", icon: Calendar, label: "Calendário" },

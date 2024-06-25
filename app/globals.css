@@ -98,6 +98,49 @@
   }
 }
 
+@keyframes spinAnimationEdit {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  35% {
+    transform: rotate(160deg);
+  }
+
+  40% {
+    transform: rotate(165deg);
+  }
+
+  45% {
+    transform: rotate(170deg);
+  }
+
+  50% {
+    transform: rotate(175deg);
+  }
+
+  55% {
+    transform: rotate(180deg);
+  }
+
+  60% {
+    transform: rotate(185deg);
+  }
+
+  65% {
+    transform: rotate(190deg);
+  }
+
+  80% {
+    transform: rotate(200deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+  
+}
+
 body {
   background: rgb(var(--background-start-rgb));
   color: rgb(var(--foreground-rgb));
@@ -184,5 +227,9 @@ body {
         rgb(var(--profile-color-rgb)));
     background-size: 600%;
     animation: gradientAnimation 10s ease infinite alternate;
+  }
+
+  .animate-spin-edit {
+    animation: spinAnimationEdit 1.85s ease-in-out infinite ;
   }
 }
