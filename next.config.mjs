@@ -2,9 +2,12 @@
 const nextConfig = {
     images: {
         remotePatterns: [
-            {hostname: "utfs.io"}
+            { hostname: "utfs.io" }
         ]
-    }
+    },
+    experimental: {
+        missingSuspenseWithCSRBailout: false,
+    },
 };
 
 export default nextConfig;

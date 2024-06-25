@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { searchForExercises } from "./_actions/search";
 import { Button } from "../_components/ui/button";
 import { ChevronLeftIcon } from "lucide-react";
+import React, { Suspense } from "react";
 
 const Exercises = () => {
   const router = useRouter();
@@ -31,7 +32,7 @@ const Exercises = () => {
   }
 
   return (
-    <>
+    <Suspense fallback={<div>Loading...</div>}>
       <div className="px-5 py-2 w-[100vw] flex flex-col items-center ">
         {exercises.length > 0 ? (
           <>
@@ -43,10 +44,12 @@ const Exercises = () => {
               >
                 <ChevronLeftIcon />
               </Button>
+
               <h1 className="text-lg font-semibold">
                 Resultados para `{searchFor}`
               </h1>
             </div>
+
             <div className="flex flex-col gap-6 w-full max-w-[500px]">
               {exercises.map((exercise) => (
                 <ExerciseItem
@@ -65,7 +68,7 @@ const Exercises = () => {
           </div>
         )}
       </div>
-    </>
+    </Suspense>
   );
 };
 
