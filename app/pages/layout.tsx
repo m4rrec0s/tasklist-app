@@ -1,3 +1,4 @@
+import { ThemeProvider } from "next-themes";
 import Header from "../_components/header";
 import Menu from "../_components/menu";
 

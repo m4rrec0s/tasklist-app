@@ -87,6 +87,7 @@ const SettingsPage = () => {
         onClick={handleDialogThemeOpen}
         variant="ghost"
         className="mt-3 mb-0 text-left border-none outline-none p-0"
+        disabled
       >
         <div className="flex flex-col gap-4 justify-between">
           <div className="flex gap-2">

@@ -13,7 +13,7 @@ const InitialScreen = () => {
   return (
     <>
       {!data?.user ? (
-        <main className="absolute bottom-0 p-8 left-0 h-[100vh] w-[100vw] bg-background z-10 flex items-center justify-center">
+        <main className="absolute bottom-0 p-8 top-0 left-0 h-[100vh] w-[100vw] bg-background z-10 flex items-center justify-center overflow-hidden">
           <div className="flex flex-col items-center">
             <Image
               className="w-[230px] h-[230px]"
