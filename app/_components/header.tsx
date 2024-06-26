@@ -38,7 +38,7 @@ const Header = () => {
     imcClassification = "text-green-400";
   } else if (imc >= 25 && imc < 29.9) {
     imcClassification = "text-yellow-400";
-  } else if (imc >= 30 && imc < 34.9) {
+  } else if (imc >= 30) {
     imcClassification = "text-red-400";
   }
 

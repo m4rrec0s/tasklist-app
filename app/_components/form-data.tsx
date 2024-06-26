@@ -18,14 +18,22 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
+import { useState } from "react";
 
 const FormDataA = () => {
   const { data: session } = useSession()
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (data: FormData) => {
+    setIsSubmitting(true);
     data.append('id', session?.id as string)
     createAdditionalData(data)
-    window.location.reload();
+    //criar um delay antes de recarregar a página
+    setTimeout(() => {
+      window.location.reload()
+    }, 3000)
+    //dar um feedback visual de que o cadastro foi concluído
+
   }
 
   return (
@@ -38,7 +46,7 @@ const FormDataA = () => {
           </DialogDescription>
         </DialogHeader>
         <form action={handleSubmit}>
-          <Input type="date" placeholder="Nascimento" name="age" required />
+          <Input type="date" placeholder="Nascimento" name="age" className="text-white" required />
           <Input type="text" placeholder="Altura" name="height" required />
           <Input type="text" placeholder="Peso" name="weight" required />
           <Select name="gender" required>
@@ -51,7 +59,7 @@ const FormDataA = () => {
             </SelectTrigger>
           </Select>
           <Button type="submit" className="w-full mt-4 hover:bg-hover rounded-lg">
-            OK
+            {isSubmitting ? 'Processando...' : 'Enviar'}
           </Button>
         </form>
       </DialogContent>
